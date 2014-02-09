@@ -11,8 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 
 class Hacker(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(_('username'), max_length=30, unique=True,
-        help_text=_('Required. 30 characters or fewer. Letters, numbers and '
-                    '@/./+/-/_ characters'),
         validators=[
             validators.RegexValidator(re.compile('^[\w.@+-]+$'), _('Enter a valid username.'), 'invalid')
         ])
@@ -30,9 +28,10 @@ class Hacker(AbstractBaseUser, PermissionsMixin):
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    repository = models.URLField(_('Github or Bitbucket page.'))     # repository
-    stackoverflow_user = models.URLField(_('Stackoverflow user.'))   # repository
-    description = models.TextField()
+    repository = models.URLField(_('Your github.com or bitbucket.org account page'),)
+    stackoverflow_user = models.URLField(_('Your Stackoverflow.com account page'))   # repository
+    website = models.URLField(_('Your blog or website'))
+    description = models.TextField(_('Additional information'))
 
     objects = UserManager()
 

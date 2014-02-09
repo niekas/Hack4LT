@@ -11,7 +11,7 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Hacker
         fields = ('username', 'first_name', 'last_name', 'email', 'repository',
-                'stackoverflow_user', 'description')
+                'website', 'stackoverflow_user', 'description')
 
 
 class LoginForm(forms.Form):
