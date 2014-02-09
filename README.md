@@ -1,4 +1,4 @@
-python.hack4.lt
+Hack4LT
 ===============
 
-Python community website. Lectures, tasks, presentations and more will be provided.
+Python community website for events, lectures, hacking, knowledge sharing and more.
