@@ -28,10 +28,10 @@ class Hacker(AbstractBaseUser, PermissionsMixin):
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    repository = models.URLField(_('Your github.com or bitbucket.org account page'),)
-    stackoverflow_user = models.URLField(_('Your Stackoverflow.com account page'))   # repository
-    website = models.URLField(_('Your blog or website'))
-    description = models.TextField(_('Additional information'))
+    repository = models.URLField(_('Your github.com or bitbucket.org account page'), blank=True)
+    stackoverflow_user = models.URLField(_('Your Stackoverflow.com account page'), blank=True)
+    website = models.URLField(_('Your blog or website'), blank=True)
+    description = models.TextField(_('Additional information'), blank=True)
 
     objects = UserManager()
 
