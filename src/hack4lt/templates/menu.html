@@ -13,7 +13,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" style="padding-right: 15px;">
             {% if user.is_authenticated %}
-                <li class="{% if active == "user" %}active{% endif %}"><a href="{% url 'profile' %}">{{ user }}</a></li>
+                <a href="{% url 'profile' %}"><button type="button" class="btn btn-success navbar-btn">{{ user }}</button></a>
+                <a href="{% url 'logout' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Log Out" %}</button></a>
             {% else %}
                 <a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Log In" %}</button></a>
                 <a href="{% url 'register' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Sign Up" %}</button></a>
