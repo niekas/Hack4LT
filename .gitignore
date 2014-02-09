@@ -1,4 +1,27 @@
-*.log
-*.pot
+# Python temporary files
 *.pyc
-local_settings.py
+*.pyo
+
+# Buildout generated files
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+
+# Compiled Django translation files
+*.mo
+
+# Static content directory
+var
+
+# Temporary files
+src/algorithms/tests/data/tmp
+tmp
+*~
+
+# Git backup files
+*.orig
