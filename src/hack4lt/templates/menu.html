@@ -15,8 +15,8 @@
             {% if user.is_authenticated %}
                 <li class="{% if active == "user" %}active{% endif %}"><a href="{% url 'profile' %}">{{ user }}</a></li>
             {% else %}
-                <a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">Log In</button></a>
-                <a href="{% url 'register' %}"><button type="button" class="btn btn-default navbar-btn">Sign Up</button></a>
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Log In" %}</button></a>
+                <a href="{% url 'register' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Sign Up" %}</button></a>
             {% endif %}
         </ul>
     </div>
