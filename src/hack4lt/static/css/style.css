@@ -1,0 +1,9 @@
+.page {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.top-bottom-spacing {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

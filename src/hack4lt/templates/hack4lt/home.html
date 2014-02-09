@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="">
-        {% trans 'Python community website for events, lectures, hacking, knowledge sharing and more {:' %}
+    <div class="col-md-8 col-md-offset-2 top-bottom-spacing">
+        <form action="{% url 'register' %}" method="post">{% csrf_token %}
+        {% trans 'Lithuanian Python community website for events, lectures, hacking, knowledge sharing and more.' %}
     </div>
 {% endblock %}

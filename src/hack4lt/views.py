@@ -51,7 +51,7 @@ def register_view(request):
             if user is not None and user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse_lazy('home'))
-    return render(request, 'hack4lt/register.html', {
+    return render(request, 'accounts/register.html', {
         'form': form,
     })
 

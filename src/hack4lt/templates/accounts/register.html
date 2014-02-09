@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-5 col-md-offset-3">
+    <div class="col-md-5 col-md-offset-3 top-bottom-spacing">
         <form action="{% url 'register' %}" method="post">{% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
