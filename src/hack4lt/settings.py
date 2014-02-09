@@ -162,6 +162,8 @@ INSTALLED_APPS = (
     'test_utils',
     'django_extensions',
     'debug_toolbar',
+    'bootstrap3',
+    'jquery',
 )
 
 # A sample logging configuration. The only tangible logging

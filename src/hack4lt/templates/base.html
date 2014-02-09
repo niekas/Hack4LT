@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 {% load i18n %}
+{% load bootstrap3 %}
 
 <head>
 
@@ -20,6 +21,7 @@
 <!-- CSS -->
 {% block css %}
 <link rel="stylesheet" href="/static/css/style.css" media="screen,projection" type="text/css" />
+  {% bootstrap_css %}
 {% endblock %}
 
 <!-- RSS -->
@@ -27,20 +29,31 @@
 
 <!-- JavaScript -->
 {% block javascript %}
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js" ></script>
+  {% bootstrap_javascript %}
 {% endblock %}
 
 </head>
 
 <body>
-    <div class="content">
+    <div class="page">
         <div class="header">
         {% block menu %}
             {% include 'menu.html' %}
         {% endblock %}
         </div>
 
+        <div class="row content">
         {% block content %}
         {% endblock %}
+        </div>
+
+        <div class="footer">
+            <hr/>
+            <p style="text-align: center">
+            <img style='width: 18px;' src="{{ STATIC_URL }}img/copyleft.png"/>
+            &nbsp;{% trans 'lietuvių liaudies kūryba' %}</p>
+        </div>
     </div>
 
 </body>
