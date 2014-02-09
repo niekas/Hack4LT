@@ -33,6 +33,11 @@ class RegistrationForm(forms.ModelForm):
         errors.append(u'Passwords do not match')
         return False
 
+    def save(self, *args, **kwargs):
+        user = super(RegistrationForm, self).save(*args, **kwargs)
+        password = self.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
 
 class LoginForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100)
