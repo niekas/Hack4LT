@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="span12 navbar-align">
+    <div class="navbar">
+        <div class="navbar-inner">
+        <ul class="nav">
+            <li class="{% if active == "home" %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+        <ul class="nav pull-right">
+            {% if user.is_authenticated %}
+                <li><a style="" href="#">{{ user }}</a></li>
+            {% else %}
+                <li class="{% if active == "login" %}active{% endif %}"><a href="{% url 'login' %}">{% trans "Log in" %}</a></li>
+            {% endif %}
+        </ul>
+        </div>
+    </div>
+</div>

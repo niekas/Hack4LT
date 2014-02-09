@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='login' %}
+{% endblock %}
+
+{% block content %}
+    <div class="span6 offset4 top-space">
+        <form action="{% url 'register' %}" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <p><input class="btn btn-primary" type="submit" value="{% trans "Register" %}" /></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load i18n %}
+
+<head>
+
+    <title>{% block title %}Hack4LT{% endblock %}</title>
+
+<!-- Meta Tags -->
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta name="robots" content="index, follow" />
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="/static/img/favicon.ico" />
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="/static/css/style.css" media="screen,projection" type="text/css" />
+{% endblock %}
+
+<!-- RSS -->
+<link rel="alternate" href="" title="RSS Feed" type="application/rss+xml" />
+
+<!-- JavaScript -->
+{% block javascript %}
+{% endblock %}
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+        {% block menu %}
+            {% include 'menu.html' %}
+        {% endblock %}
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
