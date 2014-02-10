@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2 big-spacing">
+        <form action="{% url 'register' %}" method="post">{% csrf_token %}
+        {% trans 'Lithuanian Python community website for events, lectures, hacking, knowledge sharing and more.' %}
+    </div>
+{% endblock %}

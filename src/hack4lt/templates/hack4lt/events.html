@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+    {% include 'menu.html' with active='events' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+      <div style='text-align: center;'>
+        <h3>Būsimi renginiai</h3>
+        <div style='text-align: left;'>
+        <ul>
+            <li><a href="http://pycon.lt">PyConLT 2014</a></li>
+            <li><a href="http://hack4.lt">Hack4LT 2014 hakatonas</a></li>
+            <li><a href="http://notrollsallowed.com">NoTrollsAllowed 2014</a> - veiklių žmonių suvažiavimas</li>
+        </ul>
+        </div>
+        <h3>Įvykę hakatonai</h3><br/>
+        <p>
+          <a href="http://ec.europa.eu/digital-agenda/en/ict-2013">
+              <img style="width:300px;" src="{{ STATIC_URL }}img/ICT2013.jpg"/>
+          </a>
+        </p>
+        III vieta, 2013-11-06 – 2013-11-08
+        <p><br/><br/>
+          <a href='http://www.kf.vu.lt/lt/hack4lt'>
+            <img src='{{ STATIC_URL }}img/europeana.png'/>
+          </a>
+        </p>
+        I vieta, 2013-04-04 – 2013-04-05 <br/>
+        Europeana ir Dariah hakatono Lietuvoje
+          <a href="http://www.lrt.lt/mediateka/irasas/1007176364/ziniu_amzius_2013-04-17_16_03">LR Audio reportažas</a><br>
+        <p><br/><br/>
+          <a href='http://skaidrumodirbtuves.lt'>
+            <img id='skaidrumo_dirbtuves' border="2px" src='{{ STATIC_URL }}img/skaidrumo_dirbtuves.png' />
+          </a>
+        </p>2012-11-28
+      </div>
+    </div>
+{% endblock %}

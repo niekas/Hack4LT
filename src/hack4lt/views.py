@@ -1,18 +1,25 @@
 from django.contrib.auth import login, logout, authenticate
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 
 from hack4lt.forms import LoginForm, RegistrationForm
 
-
 def index_view(request):
+    return HttpResponseRedirect(reverse_lazy('lectures'))
+
+def about_view(request):
     return render(request, 'hack4lt/home.html', {})
 
+def lectures_view(request):
+    return render(request, 'hack4lt/lectures.html', {})
 
-def python_view(reuqest):
-    return HttpResponse(_('Not implemented yet.'))
+def events_view(request):
+    return render(request, 'hack4lt/events.html', {})
+
+def tasks_view(request):
+    return render(request, 'hack4lt/tasks.html', {})
 
 
 def login_view(request, *args, **kwargs):
