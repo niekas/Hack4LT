@@ -63,3 +63,13 @@ class Hacker(AbstractBaseUser, PermissionsMixin):
             send_mail(subject, body, sender, [receiver])
             return True
         return False
+
+
+class Task1(models.Model):
+    user = models.ForeignKey('Hacker')
+    file = models.FileField(_('sys_info file'), upload_to='task1')
+
+class Task2(models.Model):
+    user = models.ForeignKey('Hacker')
+    repository = models.URLField(_('Repository page with task source code'), blank=True)
+    description = models.TextField(_('Task description'))

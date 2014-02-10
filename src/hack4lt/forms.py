@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
 from django.forms.util import ErrorList
 
-from hack4lt.models import Hacker
+from hack4lt.models import Hacker, Task1, Task2
 
 
 
@@ -54,3 +54,30 @@ class LoginForm(forms.Form):
             raise forms.ValidationError(_('Username or password is incorrect'))
         cleaned_data['user'] = user
         return cleaned_data
+
+class Task1Form(forms.ModelForm):
+    user = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = Task1
+
+    def __init__(self, user, *args, **kwargs):
+        super(Task1Form, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_user(self):
+        return self.user or None
+
+
+class Task2Form(forms.ModelForm):
+    user = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = Task2
+
+    def __init__(self, user, *args, **kwargs):
+        super(Task2Form, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_user(self):
+        return self.user or None

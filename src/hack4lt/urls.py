@@ -15,6 +15,7 @@ urlpatterns += i18n_patterns('',
     url(r'^lectures/$', lectures_view, name='lectures'),
     url(r'^events/$', events_view, name='events'),
     url(r'^tasks/$', tasks_view, name='tasks'),
+    url(r'^task/(?P<task_id>\d*)/$', task_view, name='task'),
     url(r'^about/$', about_view, name='about'),
 
     url(r'^login/$', login_view, name='login'),
