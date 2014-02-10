@@ -10,7 +10,7 @@ version_commands = [
     ('git --version', 1),
     ('hg --version', 1)
 ]
-config_files = ['~/.vimrc', '~/.gitrc', '~/.hgrc']
+config_files = ['~/.vimrc', '~/.gitconfig', '~/.hgrc']
 sys_info = ''
 
 for command, number_of_rows in version_commands:
