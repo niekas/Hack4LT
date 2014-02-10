@@ -6,8 +6,59 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-8 col-md-offset-2 big-spacing">
-        <form action="{% url 'register' %}" method="post">{% csrf_token %}
-        {% trans 'Lithuanian Python community website for events, lectures, hacking, knowledge sharing and more.' %}
+    <div class="col-md-8 col-md-offset-2">
+      <h3>2014-02-10 užduotis (0.5 balo):</h3>
+      <ol>
+        <li>Susikurti <a href="https://github.com/">github.com</a> /
+        <a href="https://bitbucket.org/">bitbucket.org</a> ir
+        <a href="https://stackoverflow.com/">stackoverflow.com</a>
+        paskyras.</li>
+        <li> Prisiregistruoti <a href="http://hack4.tl/lt/register">Hack4.LT</a> puslapyje.</li>
+        <li>Susikonfigūruoti Linux sistemą darbui</li>  
+          <ul>
+              <li>Įsidiegti <a href="http://www.ubuntu.com/desktop">Ubuntu</a>
+              operacinę sistemą. Paruošti interneto prieigą.
+              <li>Instaliuoti VIM, Git ir Mercurial terminale įvykdant komandas:
+<pre>$ sudo apt-get update
+$ sudo apt-get install vim
+$ sudo apt-get install git-core gitg
+$ sudo apt-get install mercurial
+$ sudo apt-get install meld kdiff3</pre>
+              </li>
+              <li>Susigeneruoti ssh raktą ir jį nurodyti
+            <a href="https://github.com/">github.com</a> /
+        <a href="https://bitbucket.org/">bitbucket.org</a> puslapiuose prie
+        savo paskyros nustatymų (Account settings -> SSH keys):</li>
+<pre>$ ssh-keygen
+$ cat ~/.ssh/id_rsa.pub</pre>
+              <li>Nusikopijuoti
+              konfigūracinius VIM, Git, Mercurial ir Bash failus į namų katalogą.
+<pre>$ cd ~/
+$ git clone https://github.com/strazdas/home.git
+$ mv home/.vim home/.vimrc home/.gitconfig home/.hgrc .
+$ mv home/.buildout home/.bashrc .
+$ source .bashrc
+$ rm -fr home</pre>
+              </li>
+              <li>Sugeneruoti sistemos konfigūraciją apibūdinantį failą
+              <b>sys_info</b>
+<pre>$ wget http://hack4.lt/static/files/gen_sys_info.py
+$ python gen_sys_info.py</pre>
+
+              Su VIM redaktoriumi <b>sys_info</b> faile pakeisti žodžius <i>"checksum"</i>
+              į <i>"kontrolinė suma"</i>.  <a
+                  href="http://www.openvim.com/tutorial.html">Interaktyvus VIM
+                  pradžiamokslis</a>. Kai kurios naudotinos <a
+                  href="http://ann.gimbutas.lt/technologies.html#vim">VIM
+                  komandos</a>.
+              
+<pre>$ vim sys_info</pre>
+              Gautąjį <b>sys_info</b> failą įkelti <a href="#">čia</a>.
+            </li>  
+          </ul>
+          <li>Pasirinkti kokią užduotį įgyvendinsite panaudodami Python. <i>Rekomenduoju
+          rinktis kitos paskaitos laboratorinį darbą</i>. Įgyvendinant šią užduotį reikės
+          parašyti bent 250 Python kodo eilučių. Pasirinktąją užduotį trumpai aprašykite <a href="#">čia</a>.
+      </ol>
     </div>
 {% endblock %}
