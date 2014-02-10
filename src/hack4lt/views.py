@@ -5,7 +5,13 @@ from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 
-from hack4lt.forms import LoginForm, RegistrationForm, Task1Form, Task2Form
+from hack4lt.forms import (
+    LoginForm,
+    RegistrationForm,
+    Task1Form,
+    Task2Form,
+    ProfileForm
+)
 
 
 def index_view(request):
@@ -81,5 +87,18 @@ def register_view(request):
         'form': form,
     })
 
+@login_required(login_url=reverse_lazy('login'))
 def profile_view(request):
-    return HttpResponse('Not implemented')
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('home'))
+
+    else:
+        form = ProfileForm(instance=request.user)
+
+    return render(request, 'hack4lt/task.html', {
+        'form': form,
+    })
+

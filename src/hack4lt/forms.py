@@ -6,7 +6,6 @@ from django.forms.util import ErrorList
 from hack4lt.models import Hacker, Task1, Task2
 
 
-
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(label=_('Password'), max_length=128, min_length=6,
                         widget=forms.PasswordInput(render_value=False))
@@ -81,3 +80,12 @@ class Task2Form(forms.ModelForm):
 
     def clean_user(self):
         return self.user or None
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Hacker
+        fields = ('first_name',
+                  'last_name', 'email', 'repository', 'website',
+                  'stackoverflow_user', 'description')
+
