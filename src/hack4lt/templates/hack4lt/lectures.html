@@ -6,9 +6,32 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-8 col-md-offset-2 big-spacing alert alert-success">
+    <div class="">
+        <div class="col-md-8 col-md-offset-2 alert alert-success" style="display: none;">
         Čia bus talpinami paskaitų video įrašai ir su paskaitomis susijusi
         medžiaga: kodo pavyzdžiai, nuorodos į literatūros šaltinius,
         laboratorinius darbus ir ne tik.
+        </div>
+
+        <div class="col-md-12" style="text-align: center;">
+            <h2>1. Programavimo aplinkos pasiruošimas</h2>
+            <iframe width="640" height="360" src="//www.youtube-nocookie.com/embed/GRaryf8GSJI?rel=0" frameborder="0" allowfullscreen></iframe>
+            <p><br/>2014-02-10</p>
+            <div class="col-md-offset-4" style="text-align: left;">
+            <b>Privalomos užduotys</b>:
+            <ol>
+            <li>Pasiruošti programavimo aplinką atliekant <a
+                href="http://127.0.0.1:8000/lt/tasks/">pirmąją užduotį.</a></li>
+            </ol>
+            <b>Papildomos užduotys</b>:
+            <ol>
+                <li>Išmokti spausdinti nežiūrint į klavietrūrą. <a
+                    href="{{ STATIC_URL }}img/keyboard_layout.png">Taisyklinga rankų padėtis.</a>
+            </li>
+                <li>Įvaldyti VIM redaktorių.</li>
+                <li>Išmokti bazines Linux terminalo komandas.</li>
+            </ol>
+            </div>
+        </div>
     </div>
 {% endblock %}
