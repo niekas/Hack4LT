@@ -7,7 +7,30 @@
 
 {% block content %}
     <div class="col-md-8 col-md-offset-2 big-spacing">
-        <form action="{% url 'register' %}" method="post">{% csrf_token %}
+        <p>
         {% trans 'Lithuanian Python community website for events, lectures, hacking, knowledge sharing and more.' %}
+        <p>
+        
+        <p>Šis projektas atsirado kaip <b>Programavimas Python kalba</b>
+        laisvai pasirenkamo dalyko (dėstomo VU MIF) pagalbinė priemonė
+        bendradarbiavimui su studentais.</p>
+        <p>
+        Paskaitą dėsto <b>Albertas Gimbutas</b> (el. pašto adresas:
+        <b>albertas.gimbutas @mii.vu.lt</b>)</p>
+        <p><b>Programavimas Python kalba</b> (<a href="{{ STATIC_URL }}files/python_sandas.pdf">sandas</a>) paskaitos aprašymas:<br/>
+        Python tai aukšto lygio objektinė programavimo kalba, kurią ypatingai
+        lengva išmokti. Python yra galinga ir plačiai taikoma, pvz.:
+        moksliniams skaičiavimams (<a href="http://scipy.org/">SciPy</a>), filmų
+        kūrimui (<a href="http://blender.org">Blender</a>), interneto svetainių kūrimui
+        (<a href="http://djangoproject.com">Django</a>) ir kt. Šio kurso metu suteikiamos Python
+        programavimo žinios, pažintis su profesionaliais programavimo įrankiais
+        ir praktikomis; išmokoma kokybiškai dalyvauti komandiniuose
+        programavimo projektuose. Python kalba ir jos ekosistema yra atviri,
+        todėl visos kalbos galimybės prieinamos nemokamai komerciniais
+        tikslais. Dėl atvirumo ir aukšto produktyvumo Python yra puikus
+        pasirinkimas kuriant StartUp'us. Kurso pabaigoje organizuojamas viešas
+        hakatonas, kuriame bus galima susipažinti ir pasivaržyti su tikrais
+        Python profesionalais.<br/>
+        </p>
     </div>
 {% endblock %}
