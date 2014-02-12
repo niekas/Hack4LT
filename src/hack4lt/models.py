@@ -73,3 +73,29 @@ class Task2(models.Model):
     user = models.ForeignKey('Hacker')
     repository = models.URLField(_('Repository page with task source code'), blank=True)
     description = models.TextField(_('Task description'))
+
+
+class TaskInfo(models.Model):
+    title = models.CharField(_('Title'), max_length=900, unique=True)
+    points = models.FloatField(_('Points'), default=0)
+    extra_points = models.FloatField(_('Extra points'), default=0)
+    criterias = models.TextField(_('Criterias'), blank=True)
+    description = models.TextField(_('Description'), blank=True)
+    badge = models.ImageField(_('Badge'), upload_to='badges', null=True, blank=True)
+    user = models.ForeignKey('Hacker')
+
+
+class TaskResultMixin(object):
+    task = models.ForeignKey('TaskInfo')
+    user = models.ForeignKey('Hacker')
+    total_points = models.FloatField(_('Total points'), default=0)
+    got_extra_points = models.BooleanField(_('Got extra points'), default=False)
+
+
+class Task1Result(TaskResultMixin, models.Model):
+    file = models.FileField(_('sys_info file'), upload_to='task1')
+
+
+class Task2Result(TaskResultMixin, models.Model):
+    repository = models.URLField(_('Repository page with task source code'), blank=True)
+    description = models.TextField(_('Task description'))
