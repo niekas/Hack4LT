@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-5 col-md-offset-3 small-spacing">
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <input class="btn btn-primary" type="submit" value="{% trans "Submit" %}" /></p>
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}
