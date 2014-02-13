@@ -8,6 +8,8 @@ from hack4lt.views import account, basic, task
 
 urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
+    (r'^tinymce/', include('tinymce.urls')),
+    (r'^grappelli/', include('grappelli.urls')),
 )
 
 urlpatterns += i18n_patterns('',

@@ -92,8 +92,8 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -164,6 +164,9 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'bootstrap3',
     'jquery',
+    'tinymce',
+    'grappelli',
+    'filebrowser',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -197,3 +200,10 @@ LOGGING = {
 
 # Testing settings
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
