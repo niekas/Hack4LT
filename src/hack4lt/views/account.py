@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from hack4lt.forms import (
     LoginForm,
@@ -65,3 +66,19 @@ def profile_view(request):
     return render(request, 'hack4lt/task.html', {
         'form': form,
     })
+
+
+
+class LoginRequiredMixin(object):
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+
+class AdminRequiredMixin(object):
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def dispatch(self, *args, **kwargs):
+        user = self.request.user
+        if not user.is_superuser:
+            return HttpResponseRedirect(reverse_lazy('login'))
+        return super(AdminRequiredMixin, self).dispatch(*args, **kwargs)
