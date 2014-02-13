@@ -2,19 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .account import LoginRequiredMixin, AdminRequiredMixin
-
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-
-from hack4lt.models import TaskInfo
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from hack4lt.forms import (
     Task1Form,
     Task2Form,
     TaskInfoForm,
 )
-
-
+from hack4lt.models import TaskInfo
+from hack4lt.views.account import AdminRequiredMixin
 
 
 class UserMixin(object):
