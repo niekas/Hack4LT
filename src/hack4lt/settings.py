@@ -164,9 +164,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'bootstrap3',
     'jquery',
-    'tinymce',
-    'grappelli',
-    'filebrowser',
+    'django_wysiwyg',
+    'ckeditor',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -201,9 +200,6 @@ LOGGING = {
 # Testing settings
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,paste,searchreplace",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
+
+CKEDITOR_UPLOAD_PATH = os.path.join(BUILDOUT_DIR, 'var', 'www', 'media', 'uploads')
