@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+
+{% block menu %}
+    {% include 'menu.html' with active='admin' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-5 col-md-offset-3">
+        <h3>Admin actoins</h3>
+        <ul>
+            <li><a href="{% url 'new-task-info' %}">New task</a></li>
+        </ul>
+    </div>
+{% endblock %}

@@ -25,6 +25,13 @@ def tasks_view(request):
     return render(request, 'hack4lt/tasks.html', {})
 
 @login_required(login_url=reverse_lazy('login'))
+def admin_view(request):
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse_lazy('login'))
+    return render(request, 'hack4lt/admin.html', {})
+
+
+@login_required(login_url=reverse_lazy('login'))
 def task_view(request, task_id):
     if task_id == '1':
         form_class = Task1Form

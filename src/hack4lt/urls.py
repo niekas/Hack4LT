@@ -27,6 +27,7 @@ urlpatterns += i18n_patterns('',
     url(r'^logout/$', account.logout_view, name='logout'),
     url(r'^register/$', account.register_view, name='register'),
     url(r'^profile/$', account.profile_view, name='profile'),
+    url(r'^admin/$', basic.admin_view, name='admin-dashboard'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

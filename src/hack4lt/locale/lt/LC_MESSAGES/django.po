@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-10 13:11+0000\n"
+"POT-Creation-Date: 2014-02-14 13:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:11 forms.py:44
+#: forms.py:15 forms.py:48
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:13
+#: forms.py:17
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:43
+#: forms.py:47
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:54
+#: forms.py:58
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis neteisingas"
 
@@ -102,17 +102,49 @@ msgstr "Papildoma informacija"
 msgid "{0} account activated"
 msgstr "{0} paskyra aktyvuota"
 
-#: models.py:70
+#: models.py:70 models.py:96
 msgid "sys_info file"
 msgstr "sys_info failas"
 
-#: models.py:74
+#: models.py:74 models.py:100
 msgid "Repository page with task source code"
 msgstr "Repozitorijos puslapis kuriame pateikiamas užduoties išeities kodas"
 
-#: models.py:75
+#: models.py:75 models.py:101
 msgid "Task description"
 msgstr "Užduoties aprašymas"
+
+#: models.py:79
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: models.py:80
+msgid "Points"
+msgstr "Balai"
+
+#: models.py:81
+msgid "Extra points"
+msgstr "Papildomi balai"
+
+#: models.py:82
+msgid "Criterias"
+msgstr "Kriterijai"
+
+#: models.py:83
+msgid "Description"
+msgstr "Aprašymas"
+
+#: models.py:84
+msgid "Badge"
+msgstr "Ženkliukas"
+
+#: models.py:91
+msgid "Total points"
+msgstr "Gauta balų"
+
+#: models.py:92
+msgid "Got extra points"
+msgstr "Gavo papildomų balų"
 
 #: settings.py:49
 msgid "Lithuanian"
@@ -138,15 +170,19 @@ msgstr "Užduotys"
 msgid "Events"
 msgstr "Renginiai"
 
-#: templates/menu.html:19
+#: templates/menu.html:16
+msgid "Admin"
+msgstr "Adminas"
+
+#: templates/menu.html:22
 msgid "Log Out"
 msgstr "Atsijungti"
 
-#: templates/menu.html:21
+#: templates/menu.html:24
 msgid "Log In"
 msgstr "Prisijungti"
 
-#: templates/menu.html:22
+#: templates/menu.html:25
 msgid "Sign Up"
 msgstr "Registruotis"
 
@@ -157,6 +193,10 @@ msgstr "Prisijungti"
 #: templates/accounts/register.html:14
 msgid "Register"
 msgstr "Registruotis"
+
+#: templates/hack4lt/form.html:18
+msgid "Submit"
+msgstr "Patvirtinti"
 
 #: templates/hack4lt/home.html:11
 msgid ""
