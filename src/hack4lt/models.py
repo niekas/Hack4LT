@@ -79,8 +79,8 @@ class TaskInfo(models.Model):
     title = models.CharField(_('Title'), max_length=900, unique=True)
     points = models.FloatField(_('Points'), default=0)
     extra_points = models.FloatField(_('Extra points'), default=0)
-    criterias = models.TextField(_('Criterias'), blank=True)
     description = models.TextField(_('Description'), blank=True)
+    criterias = models.TextField(_('Criterias'), blank=True)
     badge = models.ImageField(_('Badge'), upload_to='badges', null=True, blank=True)
     user = models.ForeignKey('Hacker', null=True, blank=True)
 
