@@ -8,7 +8,7 @@
 {% block content %}
     <div class="col-md-8 col-md-offset-2">
         <h2>Užduotys</h2>
-        <ul>
+        <ul class="tasks">
         {% for task in object_list %}
         <li style="padding-bottom:15px;"><span style="font-size:18px;"><b><a href="{% url 'update-task-info' task.pk %}">{{ task.title }}</a></b>
             <span style="font-size:16px;">

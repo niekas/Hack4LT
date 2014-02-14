@@ -12,3 +12,18 @@
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
+.tasks {
+    list-style: none;
+}
+
+.tasks li {
+    background: url('../img/todo.png') no-repeat 7px 7px transparent;
+    margin: 0;
+    padding: 0px 0px 1px 48px;
+    vertical-align: middle;
+}
+
+.tasks li.done {
+    background: url('../img/done.png') no-repeat 7px 7px transparent;
+}
