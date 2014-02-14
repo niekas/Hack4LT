@@ -17,8 +17,7 @@ urlpatterns += i18n_patterns('',
     url(r'^task/(?P<task_id>\d*)/$', basic.task_view, name='task'),
     url(r'^about/$', basic.about_view, name='about'),
 
-    url(r'^tasks/$', basic.tasks_view, name='tasks'),
-
+    url(r'^tasks/$', task.TaskInfoList.as_view(), name='tasks'),
     url(r'^task/info/new/$', task.TaskInfoCreate.as_view(), name='new-task-info'),
     url(r'^task/(?P<pk>\d*)/info/update/$', task.TaskInfoUpdate.as_view(), name='update-task-info'),
     url(r'^task/(?P<pk>\d*)/info/delete/$', task.TaskInfoDelete.as_view(), name='delete-task-info'),

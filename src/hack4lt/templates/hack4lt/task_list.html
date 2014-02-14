@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Užduotys</h2>
+        <ul>
+        {% for task in object_list %}
+        <li style="padding-bottom:15px;"><span style="font-size:18px;"><b><a href="{% url 'update-task-info' task.pk %}">{{ task.title }}</a></b>
+            <span style="font-size:16px;">
+            &nbsp;&nbsp;<br/>Atlygis:
+            {% if task.points %}
+                <span style="color: rgb(0, 128, 0);"><b>{{ task.points }}</b></span>
+            {% endif %}
+            {% if task.extra_points %}
+            <span style="color: rgb(0, 128, 0);"><sup><b>+{{ task.extra_points }}</b></sup></span>
+            {% endif %}
+            {% if task.badge %}
+                &nbsp; <img height="34px" src="{{ task.badge.url }}"/>
+            {% endif %}
+            {% if task.deadline %}
+                &nbsp;&nbsp;Galioja iki: <span style="color: rgb(170, 0, 0);">{{ task.deadline|date:"Y-m-d"}}</span></span>
+            {% endif %}
+            </span>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

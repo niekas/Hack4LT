@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
 from hack4lt.forms import (
     Task1Form,
@@ -30,6 +30,14 @@ class TaskInfoUpdate(UserMixin, AdminRequiredMixin, UpdateView):
     model = TaskInfo
     form_class = TaskInfoForm
     template_name = 'hack4lt/form.html'
+    success_url = reverse_lazy('tasks')
+
+class TaskInfoList(AdminRequiredMixin, ListView):
+    model = TaskInfo
+    paginate_by = 30
+    template_name = 'hack4lt/task_list.html'
+    success_url = reverse_lazy('tasks')
+
 
 class TaskInfoDelete(AdminRequiredMixin, DeleteView):
     model = TaskInfo
