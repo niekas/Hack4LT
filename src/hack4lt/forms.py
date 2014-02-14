@@ -76,7 +76,6 @@ class ProfileForm(forms.ModelForm):
                   'stackoverflow_user', 'description')
 
 class TaskInfoForm(forms.ModelForm):
-    user = forms.CharField(widget=forms.HiddenInput(), required=False)
-
     class Meta:
         model = TaskInfo
+        exclude = ('user', 'created')
