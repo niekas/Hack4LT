@@ -14,14 +14,17 @@ from hack4lt.views.account import AdminRequiredMixin
 
 
 class UserMixin(object):
-    def get_form_kwargs(self):
-        return {'user': self.request.user}
-
+    def form_valid(self, form):
+        response = super(TaskInfoCreate, self).form_valid(form)
+        form.instance.user = self.request.user
+        form.instance.save()
+        return response
 
 class TaskInfoCreate(UserMixin, AdminRequiredMixin, CreateView):
     model = TaskInfo
     form_class = TaskInfoForm
     template_name = 'hack4lt/form.html'
+    success_url = reverse_lazy('tasks')
 
 class TaskInfoUpdate(UserMixin, AdminRequiredMixin, UpdateView):
     model = TaskInfo
