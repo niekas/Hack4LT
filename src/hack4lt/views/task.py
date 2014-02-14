@@ -15,7 +15,7 @@ from hack4lt.views.account import AdminRequiredMixin
 
 class UserMixin(object):
     def form_valid(self, form):
-        response = super(TaskInfoCreate, self).form_valid(form)
+        response = super(UserMixin, self).form_valid(form)
         form.instance.user = self.request.user
         form.instance.save()
         return response
