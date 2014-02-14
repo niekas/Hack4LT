@@ -59,22 +59,12 @@ class LoginForm(forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
-class UserMixin(forms.ModelForm):
-    user = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    def __init__(self, user, *args, **kwargs):
-        super(UserMixin, self).__init__(*args, **kwargs)
-        self.user = user
-
-    def clean_user(self):
-        return self.user or None
-
-
-class Task1Form(UserMixin, forms.ModelForm):
+class Task1Form(forms.ModelForm):
     class Meta:
         model = Task1
 
-class Task2Form(UserMixin, forms.ModelForm):
+class Task2Form(forms.ModelForm):
     class Meta:
         model = Task2
 
@@ -85,6 +75,6 @@ class ProfileForm(forms.ModelForm):
                   'last_name', 'email', 'repository', 'website',
                   'stackoverflow_user', 'description')
 
-class TaskInfoForm(UserMixin, forms.ModelForm):
+class TaskInfoForm(forms.ModelForm):
     class Meta:
         model = TaskInfo
