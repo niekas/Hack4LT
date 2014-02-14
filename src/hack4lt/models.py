@@ -82,12 +82,12 @@ class TaskInfo(models.Model):
     criterias = models.TextField(_('Criterias'), blank=True)
     description = models.TextField(_('Description'), blank=True)
     badge = models.ImageField(_('Badge'), upload_to='badges', null=True, blank=True)
-    user = models.ForeignKey('Hacker')
+    user = models.ForeignKey('Hacker', null=True, blank=True)
 
 
 class TaskResultMixin(object):
     task = models.ForeignKey('TaskInfo')
-    user = models.ForeignKey('Hacker')
+    user = models.ForeignKey('Hacker', null=True, blank=True)
     total_points = models.FloatField(_('Total points'), default=0)
     got_extra_points = models.BooleanField(_('Got extra points'), default=False)
 
