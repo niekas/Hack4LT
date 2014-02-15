@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
@@ -8,6 +8,8 @@ from hack4lt.forms import (
     Task1Form,
     Task2Form,
     TaskInfoForm,
+    Task1ResultForm,
+    Task2ResultForm,
 )
 from hack4lt.models import TaskInfo, TaskResultMixin
 from hack4lt.views.account import AdminRequiredMixin
@@ -45,10 +47,62 @@ class TaskInfoList(AdminRequiredMixin, ListView):
                                             values_list('pk', 'total_points'))
         return context
 
-
 class TaskInfoDelete(AdminRequiredMixin, DeleteView):
     model = TaskInfo
     success_url = reverse_lazy('tasks')
+
+class TaskResultCreate(UserMixin, CreateView):
+    template_name = 'hack4lt/task_result_form.html'
+    success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskResultCreate, self).get_context_data(**kwargs)
+        context['task'] = TaskInfo.objects.get(pk=self.kwargs.get('pk'))
+        return context
+
+    def get_object(self, queryset=None):
+        task_id = self.kwargs['pk']
+        return eval('Task%dResult()' % int(task_id))
+
+    def form_valid(self, form):
+        response = super(TaskResultCreate, self).form_valid(form)
+        form.instance.task_id = self.kwargs.get('pk')
+        form.save()
+        return response
+
+    def get_form_class(self):
+        task_id = self.kwargs['pk']
+        return eval('Task%dResultForm' % int(task_id))
+
+
+
+class TaskResultUpdate(UserMixin, UpdateView):
+    template_name = 'hack4lt/task_result_form.html'
+    success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskResultUpdate, self).get_context_data(**kwargs)
+        context['task'] = TaskInfo.objects.get(pk=self.kwargs.get('pk'))
+        return context
+
+    def get_object(self, queryset=None):
+        task_id = self.kwargs['pk']
+        user = self.request.user
+        task_objs = TaskResultMixin.objects.filter(user=user, task_id=task_id)
+        if not task_objs.exists():
+            raise Http404
+        task = task_objs.order_by('-created')[0]
+        return getattr(task, 'task%dresult' % int(task.task_id))
+
+    def form_valid(self, form):
+        response = super(TaskResultUpdate, self).form_valid(form)
+        form.instance.task_id = self.kwargs.get('pk')
+        form.save()
+        return response
+
+    def get_form_class(self):
+        task_id = self.kwargs['pk']
+        return eval('Task%dResultForm' % int(task_id))
 
 
 def tasks_view(request):
@@ -71,3 +125,10 @@ def task_view(request, task_id):
     return render(request, 'hack4lt/task.html', {
             'form': form,
         })
+
+
+def do_task_view(request, pk):
+    user = request.user
+    if TaskResultMixin.objects.filter(user=user, task_id=pk).exists():
+        return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'pk': pk}))
+    return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'pk': pk}))

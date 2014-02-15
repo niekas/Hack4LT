@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-14 13:38+0000\n"
+"POT-Creation-Date: 2014-02-15 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:15 forms.py:48
+#: forms.py:17 forms.py:50
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:17
+#: forms.py:19
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:47
+#: forms.py:49
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:58
+#: forms.py:60
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis neteisingas"
 
@@ -78,7 +78,7 @@ msgstr ""
 "Nurodo ar naudotojas yra aktyvuotas. Deaktyvuokite naudotoją vietoje jo "
 "ištrynimo."
 
-#: models.py:29
+#: models.py:29 models.py:87
 msgid "date joined"
 msgstr "Profilio sukūrimo data"
 
@@ -102,15 +102,15 @@ msgstr "Papildoma informacija"
 msgid "{0} account activated"
 msgstr "{0} paskyra aktyvuota"
 
-#: models.py:70 models.py:96
+#: models.py:70 models.py:100
 msgid "sys_info file"
 msgstr "sys_info failas"
 
-#: models.py:74 models.py:100
+#: models.py:74 models.py:104
 msgid "Repository page with task source code"
 msgstr "Repozitorijos puslapis kuriame pateikiamas užduoties išeities kodas"
 
-#: models.py:75 models.py:101
+#: models.py:75 models.py:105
 msgid "Task description"
 msgstr "Užduoties aprašymas"
 
@@ -127,24 +127,36 @@ msgid "Extra points"
 msgstr "Papildomi balai"
 
 #: models.py:82
-msgid "Criterias"
-msgstr "Kriterijai"
+msgid "Deadline"
+msgstr "Terminas"
 
 #: models.py:83
 msgid "Description"
 msgstr "Aprašymas"
 
 #: models.py:84
+msgid "Criterias"
+msgstr "Kriterijai"
+
+#: models.py:85
 msgid "Badge"
 msgstr "Ženkliukas"
 
-#: models.py:91
+#: models.py:93
 msgid "Total points"
 msgstr "Gauta balų"
 
-#: models.py:92
+#: models.py:94
 msgid "Got extra points"
 msgstr "Gavo papildomų balų"
+
+#: models.py:95
+msgid "Task done"
+msgstr "Užduotis atlikta"
+
+#: models.py:96
+msgid "Created"
+msgstr "Sukurta"
 
 #: settings.py:49
 msgid "Lithuanian"
@@ -194,7 +206,11 @@ msgstr "Prisijungti"
 msgid "Register"
 msgstr "Registruotis"
 
-#: templates/hack4lt/form.html:18
+#: templates/hack4lt/admin.html:12
+msgid "Admin actions"
+msgstr "Admino veiksmai"
+
+#: templates/hack4lt/form.html:18 templates/hack4lt/task_result_form.html:24
 msgid "Submit"
 msgstr "Patvirtinti"
 
@@ -209,6 +225,14 @@ msgstr ""
 #: templates/hack4lt/task.html:14
 msgid "Save"
 msgstr "Išsaugoti"
+
+#: templates/hack4lt/task_result_form.html:15
+msgid "Evaluation criterias"
+msgstr "Vertinimo kriterijai"
+
+#: templates/hack4lt/task_result_form.html:18
+msgid "Enter your task results:"
+msgstr "Įveskite atliktos užduoties rezultatus:"
 
 #~ msgid "Not implemented yet."
 #~ msgstr "Dar neįgyvendinta."

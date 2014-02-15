@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load wysiwyg %}
+
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9 col-md-offset-2 small-spacing">
+        <span style="text-align: center;"> <h3>{{ task.title }}</h3> </span>
+        {{ task.description|safe }}
+        <span style="text-align: center;"> <h4>{% trans 'Evaluation criterias' %}</h4> </span>
+        {{ task.criterias|safe }}
+        <hr/>
+        <span style="text-align: center;"> <h4>{% trans 'Enter your task results:' %}</h4></span>
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% wysiwyg_setup %}
+            {% bootstrap_form form %}
+            
+            {% buttons %}
+            <input class="btn btn-primary col-md-offset-2" type="submit" value="{% trans "Submit" %}" /></p>
+            {% endbuttons %}
+        </form>
+    </div>
+    {% wysiwyg_editor "id_description" %}
+    {% wysiwyg_editor "id_criterias" %}
+{% endblock %}

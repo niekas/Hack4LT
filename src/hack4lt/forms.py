@@ -7,7 +7,9 @@ from hack4lt.models import (
     Hacker,
     Task1,
     Task2,
-    TaskInfo
+    TaskInfo,
+    Task1Result,
+    Task2Result,
 )
 
 
@@ -63,19 +65,30 @@ class LoginForm(forms.Form):
 class Task1Form(forms.ModelForm):
     class Meta:
         model = Task1
+        exclude = ('user',)
 
 class Task2Form(forms.ModelForm):
     class Meta:
         model = Task2
+        exclude = ('user',)
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Hacker
-        fields = ('first_name',
-                  'last_name', 'email', 'repository', 'website',
+        fields = ('first_name', 'last_name', 'email', 'repository', 'website',
                   'stackoverflow_user', 'description')
 
 class TaskInfoForm(forms.ModelForm):
     class Meta:
         model = TaskInfo
         exclude = ('user', 'created')
+
+class Task1ResultForm(forms.ModelForm):
+    class Meta:
+        model = Task1Result
+        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
+
+class Task2ResultForm(forms.ModelForm):
+    class Meta:
+        model = Task2Result
+        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
