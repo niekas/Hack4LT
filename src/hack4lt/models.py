@@ -88,12 +88,12 @@ class TaskInfo(models.Model):
 
 
 class TaskResultMixin(models.Model):
-    task = models.ForeignKey('TaskInfo')
+    task = models.ForeignKey('TaskInfo', null=True, blank=True)
     user = models.ForeignKey('Hacker', null=True, blank=True)
     total_points = models.FloatField(_('Total points'), default=0)
     got_extra_points = models.BooleanField(_('Got extra points'), default=False)
     done = models.BooleanField(_('Task done'), default=False)
-    created = models.DateTimeField(_('date joined'), default=timezone.now)
+    created = models.DateTimeField(_('Created'), default=timezone.now)
 
 
 class Task1Result(TaskResultMixin, models.Model):
