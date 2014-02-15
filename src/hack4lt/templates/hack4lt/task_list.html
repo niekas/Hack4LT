@@ -12,7 +12,13 @@
         <ul class="tasks">
         {% for task in object_list %}
         <li class="{% if task.pk in tasks_done.keys %}done{% endif %}"
-        style="padding-bottom:15px;"><span style="font-size:18px;"><b><a href="{% url 'update-task-info' task.pk %}">{{ task.title }}</a></b>
+        style="padding-bottom:15px;"><span style="font-size:18px;"><b>
+                <a href="">{{ task.title }}</a>
+                {% if user.is_superuser %}
+                &nbsp;<a href="{% url 'update-task-info' task.pk %}">
+                    <span class="glyphicon glyphicon-pencil" style="color:black;"></span></a>
+                {% endif %}
+            </b>
             <span style="font-size:16px;">
             &nbsp;&nbsp;<br/>Atlygis:
             {% if task.points %}
@@ -26,7 +32,7 @@
             <span style="color: rgb(0, 128, 0);"><sup><b>+{{ task.extra_points }}</b></sup></span>
             {% endif %}
             {% if task.badge %}
-                &nbsp; <img height="34px" src="{{ task.badge.url }}"/>
+                &nbsp; <img class="img-thumbnail" height="34px" src="{{ task.badge.url }}"/>
             {% endif %}
             {% if task.deadline %}
                 &nbsp;&nbsp;Galioja iki: <span style="color: rgb(170, 0, 0);">{{ task.deadline|date:"Y-m-d"}}</span></span>
