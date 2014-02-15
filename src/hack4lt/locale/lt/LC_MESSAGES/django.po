@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-15 15:41+0000\n"
+"POT-Creation-Date: 2014-02-15 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,15 +102,15 @@ msgstr "Papildoma informacija"
 msgid "{0} account activated"
 msgstr "{0} paskyra aktyvuota"
 
-#: models.py:70 models.py:100
+#: models.py:70 models.py:101
 msgid "sys_info file"
 msgstr "sys_info failas"
 
-#: models.py:74 models.py:104
+#: models.py:74 models.py:105
 msgid "Repository page with task source code"
 msgstr "Repozitorijos puslapis kuriame pateikiamas užduoties išeities kodas"
 
-#: models.py:75 models.py:105
+#: models.py:75 models.py:106
 msgid "Task description"
 msgstr "Užduoties aprašymas"
 
@@ -142,19 +142,23 @@ msgstr "Kriterijai"
 msgid "Badge"
 msgstr "Ženkliukas"
 
-#: models.py:93
+#: models.py:88
+msgid "Slug"
+msgstr "Trumpinys"
+
+#: models.py:94
 msgid "Total points"
 msgstr "Gauta balų"
 
-#: models.py:94
+#: models.py:95
 msgid "Got extra points"
 msgstr "Gavo papildomų balų"
 
-#: models.py:95
+#: models.py:96
 msgid "Task done"
 msgstr "Užduotis atlikta"
 
-#: models.py:96
+#: models.py:97
 msgid "Created"
 msgstr "Sukurta"
 
@@ -209,6 +213,10 @@ msgstr "Registruotis"
 #: templates/hack4lt/admin.html:12
 msgid "Admin actions"
 msgstr "Admino veiksmai"
+
+#: templates/hack4lt/admin.html:15
+msgid "Create new task"
+msgstr "Kurti naują užduotį"
 
 #: templates/hack4lt/form.html:18 templates/hack4lt/task_result_form.html:24
 msgid "Submit"
