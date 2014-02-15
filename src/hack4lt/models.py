@@ -85,6 +85,7 @@ class TaskInfo(models.Model):
     badge = models.ImageField(_('Badge'), upload_to='badges', null=True, blank=True)
     user = models.ForeignKey('Hacker', null=True, blank=True)
     created = models.DateTimeField(_('date joined'), default=timezone.now)
+    slug = models.CharField(_('Slug'), max_length=90, unique=True)
 
 
 class TaskResult(models.Model):
@@ -96,10 +97,10 @@ class TaskResult(models.Model):
     created = models.DateTimeField(_('Created'), default=timezone.now)
 
 
-class Task1Result(TaskResult, models.Model):
+class TaskAplinkaResult(TaskResult, models.Model):
     file = models.FileField(_('sys_info file'), upload_to='task1')
 
 
-class Task2Result(TaskResult, models.Model):
+class TaskPythonResult(TaskResult, models.Model):
     repository = models.URLField(_('Repository page with task source code'), blank=True)
     description = models.TextField(_('Task description'))

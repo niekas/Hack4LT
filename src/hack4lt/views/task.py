@@ -8,11 +8,12 @@ from hack4lt.forms import (
     Task1Form,
     Task2Form,
     TaskInfoForm,
-    Task1ResultForm,
-    Task2ResultForm,
+    TaskAplinkaResultForm,
+    TaskPythonResultForm,
 )
 from hack4lt.models import TaskInfo, TaskResult
 from hack4lt.views.account import AdminRequiredMixin
+from hack4lt.utils import slugify
 
 
 class UserMixin(object):
@@ -57,22 +58,22 @@ class TaskResultCreate(UserMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskResultCreate, self).get_context_data(**kwargs)
-        context['task'] = TaskInfo.objects.get(pk=self.kwargs.get('pk'))
+        context['task'] = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
         return context
 
     def get_object(self, queryset=None):
-        task_id = self.kwargs['pk']
-        return eval('Task%dResult()' % int(task_id))
+        task = TaskInfo.objects.get(slug=self.kwargs['slug'])
+        return eval('Task%sResult()' % slugify(unicode(task.slug)).capitalize())
 
     def form_valid(self, form):
         response = super(TaskResultCreate, self).form_valid(form)
-        form.instance.task_id = self.kwargs.get('pk')
+        form.instance.task = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
         form.save()
         return response
 
     def get_form_class(self):
-        task_id = self.kwargs['pk']
-        return eval('Task%dResultForm' % int(task_id))
+        task = TaskInfo.objects.get(slug=self.kwargs['slug'])
+        return eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
 
 
 
@@ -82,27 +83,27 @@ class TaskResultUpdate(UserMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskResultUpdate, self).get_context_data(**kwargs)
-        context['task'] = TaskInfo.objects.get(pk=self.kwargs.get('pk'))
+        context['task'] = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
         return context
 
     def get_object(self, queryset=None):
-        task_id = self.kwargs['pk']
+        task_slug = self.kwargs.get('slug')
         user = self.request.user
-        task_objs = TaskResult.objects.filter(user=user, task_id=task_id)
+        task_objs = TaskResult.objects.filter(user=user, task__slug=task_slug)
         if not task_objs.exists():
             raise Http404
         task = task_objs.order_by('-created')[0]
-        return getattr(task, 'task%dresult' % int(task.task_id))
+        return getattr(task, 'task%sresult' % slugify(unicode(task.task.slug)))
 
     def form_valid(self, form):
         response = super(TaskResultUpdate, self).form_valid(form)
-        form.instance.task_id = self.kwargs.get('pk')
+        form.instance.task = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
         form.save()
         return response
 
     def get_form_class(self):
-        task_id = self.kwargs['pk']
-        return eval('Task%dResultForm' % int(task_id))
+        task = TaskInfo.objects.get(slug=self.kwargs['slug'])
+        return eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
 
 
 def tasks_view(request):
@@ -127,8 +128,8 @@ def task_view(request, task_id):
         })
 
 
-def do_task_view(request, pk):
+def do_task_view(request, slug):
     user = request.user
-    if TaskResult.objects.filter(user=user, task_id=pk).exists():
-        return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'pk': pk}))
-    return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'pk': pk}))
+    if TaskResult.objects.filter(user=user, task__slug=slug).exists():
+        return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'slug': slug}))
+    return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'slug': slug}))

@@ -8,8 +8,8 @@ from hack4lt.models import (
     Task1,
     Task2,
     TaskInfo,
-    Task1Result,
-    Task2Result,
+    TaskAplinkaResult,
+    TaskPythonResult,
 )
 
 
@@ -83,12 +83,12 @@ class TaskInfoForm(forms.ModelForm):
         model = TaskInfo
         exclude = ('user', 'created')
 
-class Task1ResultForm(forms.ModelForm):
+class TaskAplinkaResultForm(forms.ModelForm):
     class Meta:
-        model = Task1Result
+        model = TaskAplinkaResult
         exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
 
-class Task2ResultForm(forms.ModelForm):
+class TaskPythonResultForm(forms.ModelForm):
     class Meta:
-        model = Task2Result
+        model = TaskPythonResult
         exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
