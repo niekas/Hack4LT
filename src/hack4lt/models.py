@@ -87,7 +87,7 @@ class TaskInfo(models.Model):
     created = models.DateTimeField(_('date joined'), default=timezone.now)
 
 
-class TaskResultMixin(models.Model):
+class TaskResult(models.Model):
     task = models.ForeignKey('TaskInfo', null=True, blank=True)
     user = models.ForeignKey('Hacker', null=True, blank=True)
     total_points = models.FloatField(_('Total points'), default=0)
@@ -96,10 +96,10 @@ class TaskResultMixin(models.Model):
     created = models.DateTimeField(_('Created'), default=timezone.now)
 
 
-class Task1Result(TaskResultMixin, models.Model):
+class Task1Result(TaskResult, models.Model):
     file = models.FileField(_('sys_info file'), upload_to='task1')
 
 
-class Task2Result(TaskResultMixin, models.Model):
+class Task2Result(TaskResult, models.Model):
     repository = models.URLField(_('Repository page with task source code'), blank=True)
     description = models.TextField(_('Task description'))

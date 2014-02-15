@@ -11,7 +11,7 @@ from hack4lt.forms import (
     Task1ResultForm,
     Task2ResultForm,
 )
-from hack4lt.models import TaskInfo, TaskResultMixin
+from hack4lt.models import TaskInfo, TaskResult
 from hack4lt.views.account import AdminRequiredMixin
 
 
@@ -42,7 +42,7 @@ class TaskInfoList(AdminRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskInfoList, self).get_context_data(**kwargs)
-        user_tasks = TaskResultMixin.objects.filter(user=self.request.user)
+        user_tasks = TaskResult.objects.filter(user=self.request.user)
         context['tasks_done'] = dict(user_tasks.filter(done=True).
                                             values_list('pk', 'total_points'))
         return context
@@ -88,7 +88,7 @@ class TaskResultUpdate(UserMixin, UpdateView):
     def get_object(self, queryset=None):
         task_id = self.kwargs['pk']
         user = self.request.user
-        task_objs = TaskResultMixin.objects.filter(user=user, task_id=task_id)
+        task_objs = TaskResult.objects.filter(user=user, task_id=task_id)
         if not task_objs.exists():
             raise Http404
         task = task_objs.order_by('-created')[0]
@@ -129,6 +129,6 @@ def task_view(request, task_id):
 
 def do_task_view(request, pk):
     user = request.user
-    if TaskResultMixin.objects.filter(user=user, task_id=pk).exists():
+    if TaskResult.objects.filter(user=user, task_id=pk).exists():
         return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'pk': pk}))
     return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'pk': pk}))
