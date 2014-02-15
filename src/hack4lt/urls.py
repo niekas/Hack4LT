@@ -21,6 +21,7 @@ urlpatterns += i18n_patterns('',
     url(r'^task/(?P<slug>[a-z0-9-_]+)/do/$', task.do_task_view, name='do-task'),
     url(r'^task/(?P<slug>[a-z0-9-_]+)/create/$', task.TaskResultCreate.as_view(), name='create-task'),
     url(r'^task/(?P<slug>[a-z0-9-_]+)/update/$', task.TaskResultUpdate.as_view(), name='update-task'),
+    url(r'^task/(?P<slug>[a-z0-9-_]+)/view/$', task.TaskResultDetail.as_view(), name='view-task'),
 
     url(r'^task/info/new/$', task.TaskInfoCreate.as_view(), name='new-task-info'),
     url(r'^task/(?P<pk>\d*)/info/update/$', task.TaskInfoUpdate.as_view(), name='update-task-info'),

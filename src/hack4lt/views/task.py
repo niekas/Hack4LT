@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from hack4lt.forms import (
     Task1Form,
@@ -76,7 +76,6 @@ class TaskResultCreate(UserMixin, CreateView):
         return eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
 
 
-
 class TaskResultUpdate(UserMixin, UpdateView):
     template_name = 'hack4lt/task_result_form.html'
     success_url = reverse_lazy('tasks')
@@ -106,6 +105,19 @@ class TaskResultUpdate(UserMixin, UpdateView):
         return eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
 
 
+class TaskResultDetail(UserMixin, DetailView):
+    template_name = 'hack4lt/task_result_form.html'
+    success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskResultDetail, self).get_context_data(**kwargs)
+        context['task'] = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
+        return context
+
+    def get_object(self, queryset=None):
+        return None
+
+
 def tasks_view(request):
     return render(request, 'hack4lt/tasks.html', {})
 
@@ -130,6 +142,16 @@ def task_view(request, task_id):
 
 def do_task_view(request, slug):
     user = request.user
+    try:
+        task = TaskInfo.objects.get(slug=slug)
+    except TaskInfo.DoesNotExist:
+        raise Http404
+    try:
+        eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
+    except NameError:
+        return HttpResponseRedirect(reverse_lazy('view-task', kwargs={'slug': slug}))
+
     if TaskResult.objects.filter(user=user, task__slug=slug).exists():
         return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'slug': slug}))
+
     return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'slug': slug}))
