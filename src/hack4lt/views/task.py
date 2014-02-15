@@ -9,7 +9,7 @@ from hack4lt.forms import (
     Task2Form,
     TaskInfoForm,
 )
-from hack4lt.models import TaskInfo
+from hack4lt.models import TaskInfo, TaskResultMixin
 from hack4lt.views.account import AdminRequiredMixin
 
 
@@ -37,6 +37,13 @@ class TaskInfoList(AdminRequiredMixin, ListView):
     paginate_by = 30
     template_name = 'hack4lt/task_list.html'
     success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskInfoList, self).get_context_data(**kwargs)
+        user_tasks = TaskResultMixin.objects.filter(user=self.request.user)
+        context['tasks_done'] = dict(user_tasks.filter(done=True).
+                                            values_list('pk', 'total_points'))
+        return context
 
 
 class TaskInfoDelete(AdminRequiredMixin, DeleteView):
