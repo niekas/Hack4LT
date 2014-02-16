@@ -86,11 +86,9 @@ class TaskInfoForm(forms.ModelForm):
 class TaskAplinkaResultForm(forms.ModelForm):
     class Meta:
         model = TaskAplinkaResult
-        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done',
-                   'created')
+        fields = ('file', 'should_check')
 
 class TaskPythonResultForm(forms.ModelForm):
     class Meta:
         model = TaskPythonResult
-        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done',
-                   'created')
+        fields = ('repository', 'description')
