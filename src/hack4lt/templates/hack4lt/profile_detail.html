@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-9 col-md-offset-3">
+    <div class="col-md-9 col-md-offset-2">
         <span style="text-align: center;">
         <h3>{{ object }} <a href="{% url 'profile-edit' %}"><span style="font-size: 16px;"><span class="glyphicon glyphicon-pencil"></span></span></a></h3>
         </span>
@@ -18,6 +18,8 @@
                 &nbsp; <a href="{{ task.badge.url }}"><img class="img-thumbnail" style="height:64px;" src="{{ task.badge.url }}"/></a>
             {% endif %}
         {% endfor %}
+    </div>
+    <div class="col-md-8 col-md-offset-3">
         <ul>
           <li>{% trans 'Got points' %}: <b style="color: rgb(0, 80, 0);">{{ total_points }}</b></li>
           <li>{% trans 'Email' %}: <b>{{ object.email }}</b>
