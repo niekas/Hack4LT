@@ -94,6 +94,7 @@ class TaskResult(models.Model):
     total_points = models.FloatField(_('Total points'), default=0)
     got_extra_points = models.BooleanField(_('Got extra points'), default=False)
     done = models.BooleanField(_('Task done'), default=False)
+    should_check = models.BooleanField(_('Finished task, it can be examined'), default=False)
     created = models.DateTimeField(_('Created'), default=timezone.now)
 
 

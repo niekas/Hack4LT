@@ -86,9 +86,11 @@ class TaskInfoForm(forms.ModelForm):
 class TaskAplinkaResultForm(forms.ModelForm):
     class Meta:
         model = TaskAplinkaResult
-        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
+        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done',
+                   'created')
 
 class TaskPythonResultForm(forms.ModelForm):
     class Meta:
         model = TaskPythonResult
-        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done', 'created')
+        exclude = ('user', 'task', 'total_points', 'got_extra_points', 'done',
+                   'created')
