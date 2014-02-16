@@ -1,4 +1,3 @@
-#! coding: utf-8
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, Http404
@@ -145,7 +144,11 @@ class TaskResultCheckUpdate(AdminRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskResultCheckUpdate, self).get_context_data(**kwargs)
-        context['task_form'] = get_task_form(slug=self.object.task.slug, user=self.object.user)
+        slug = self.object.task.slug
+        user = self.object.user
+        context['task_form'] = get_task_form(slug=slug, user=user)
+        context['comments'] = TaskComment.objects.order_by('created').filter(task__task__slug=slug, user=user)
+        context['comment_form'] = CommentForm()
         return context
 
     def get_object(self, queryset=None):
@@ -192,6 +195,22 @@ def user_comment_view(request, slug):
     else:
         form = CommentForm()
     return HttpResponseRedirect(reverse_lazy('do-task', kwargs={'slug': slug}))
+
+
+def admin_comment_view(request, pk):
+    user = request.user
+    task = TaskResult.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form.instance.user = user
+            form.instance.task = task
+            form.instance.save()
+            return HttpResponseRedirect(reverse_lazy('check-task', kwargs={'pk': pk}))
+    else:
+        form = CommentForm()
+    return HttpResponseRedirect(reverse_lazy('check-task', kwargs={'pk': pk}))
 
 
 def do_task_view(request, slug):

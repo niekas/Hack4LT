@@ -24,7 +24,7 @@ urlpatterns += i18n_patterns('',
     url(r'^task/(?P<slug>[a-z0-9-_]+)/view/$', task.TaskResultDetail.as_view(), name='view-task'),
 
     url(r'^task/(?P<slug>[a-z0-9-_]+)/comment/$', task.user_comment_view, name='comment-task'),
-
+    url(r'^task/(?P<pk>\d*)/admin/comment/$', task.admin_comment_view, name='admin-comment-task'),
     url(r'^task/(?P<pk>\d*)/check/$', task.TaskResultCheckUpdate.as_view(), name='check-task'),
 
     url(r'^task/info/new/$', task.TaskInfoCreate.as_view(), name='new-task-info'),
