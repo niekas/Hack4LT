@@ -8,7 +8,6 @@
 
 {% block content %}
     <div class="col-md-8 col-md-offset-2">
-        <h2>Užduotys</h2>
         <ul class="tasks">
         {% for task in object_list %}
         <li class="{% if task.pk in tasks_done.keys %}done{% endif %}"
@@ -32,7 +31,7 @@
             <span style="color: rgb(0, 128, 0);"><sup><b>+{{ task.extra_points }}</b></sup></span>
             {% endif %}
             {% if task.badge %}
-                &nbsp; <img class="img-thumbnail" height="34px" src="{{ task.badge.url }}"/>
+            &nbsp; <a href="{{ task.badge.url }}"><img class="img-thumbnail" style="height:64px;" src="{{ task.badge.url }}"/></a>
             {% endif %}
             {% if task.deadline %}
                 &nbsp;&nbsp;Galioja iki: <span style="color: rgb(170, 0, 0);">{{ task.deadline|date:"Y-m-d"}}</span></span>
