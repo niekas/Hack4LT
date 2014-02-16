@@ -9,18 +9,26 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-9 col-md-offset-2">
-        <h3>{{ object }} <a href="{% url 'profile-edit' %}"><span class="glyphicon glyphicon-pencil" style="color:black;"></span></a></h3>
+    <div class="col-md-9 col-md-offset-3">
+        <span style="text-align: center;">
+        <h3>{{ object }} <a href="{% url 'profile-edit' %}"><span style="font-size: 16px;"><span class="glyphicon glyphicon-pencil"></span></span></a></h3>
+        </span>
         {% for task in tasks_done %}
             {% if task.badge %}
                 &nbsp; <a href="{{ task.badge.url }}"><img class="img-thumbnail" style="height:64px;" src="{{ task.badge.url }}"/></a>
             {% endif %}
         {% endfor %}
         <ul>
-        <li>{% trans 'Joined:' %} {{ object.date_joined|date:"Y-m-d" }}</li>
-        <li>{% trans 'Got points:' %} <b style="color: rgb(0, 128, 0);">{{ total_points }}</b></li>
-        <li>{% trans 'Repository:' %} {{ object.description|safe }}</li>
-        <li>{% trans 'About me:' %} {{ object.description|safe }}</li>
+          <li>{% trans 'Got points' %}: <b style="color: rgb(0, 80, 0);">{{ total_points }}</b></li>
+          <li>{% trans 'Email' %}: <b>{{ object.email }}</b>
+          {% if not object.email_verified %}
+                &nbsp;&nbsp; <a class="btn btn-sm btn-warning" href="verify-email">{% trans "Verify email" %}</a>
+          {% endif %}</li>
+          <li>{% trans 'Joined' %}: <b>{{ object.date_joined|date:"Y-m-d" }}</b></li>
+          <li>{% trans 'Repository' %}: <b>{{ object.description }}</b></li>
+          <li>{% trans 'Stackoverflow' %}: <b>{{ object.stackoverflow }}</b></li>
+          <li>{% trans 'Website' %}: <b>{{ object.website }}</b></li>
+          <li>{% trans 'Description' %}: <b>{{ object.description|safe }}</b></li>
         </ul>
     </div>
 {% endblock %}
