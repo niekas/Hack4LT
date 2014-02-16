@@ -30,7 +30,8 @@ urlpatterns += i18n_patterns('',
     url(r'^login/$', account.login_view, name='login'),
     url(r'^logout/$', account.logout_view, name='logout'),
     url(r'^register/$', account.register_view, name='register'),
-    url(r'^profile/$', account.profile_view, name='profile'),
+    url(r'^profile/$', account.ProfileDetailView.as_view(), name='profile'),
+    url(r'^profile/edit/$', account.profile_view, name='profile-edit'),
     url(r'^admin/$', basic.admin_view, name='admin-dashboard'),
 )
 
