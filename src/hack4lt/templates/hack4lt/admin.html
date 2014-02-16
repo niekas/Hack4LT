@@ -14,6 +14,12 @@
         <ul>
             <li><a href="{% url 'new-task-info' %}">{% trans "Create new task" %}</a></li>
         </ul>
+        {% if tasks_to_check %}
+          {% trans "Check these tasks" %}:
+          {% for task_result in tasks_to_check %}
+          <li><a href="{% url 'check-task' task_result.pk %}">{{ task_result.task.slug }}  &lt;{{ task_result.user.username }}&gt;</li>
+          {% endfor %}
+        {% endif %}
         </span>
     </div>
 {% endblock %}

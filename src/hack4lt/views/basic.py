@@ -7,6 +7,7 @@ from hack4lt.forms import (
     Task1Form,
     Task2Form,
 )
+from hack4lt.models import TaskResult
 
 
 def index_view(request):
@@ -28,7 +29,9 @@ def tasks_view(request):
 def admin_view(request):
     if not request.user.is_superuser:
         return HttpResponseRedirect(reverse_lazy('login'))
-    return render(request, 'hack4lt/admin.html', {})
+    return render(request, 'hack4lt/admin.html', {
+        'tasks_to_check': TaskResult.objects.filter(done=False, should_check=True)
+    })
 
 
 @login_required(login_url=reverse_lazy('login'))
