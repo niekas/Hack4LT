@@ -7,10 +7,11 @@ from hack4lt.models import (
     Hacker,
     Task1,
     Task2,
-    TaskInfo,
-    TaskResult,
     TaskAplinkaResult,
+    TaskComment,
+    TaskInfo,
     TaskPythonResult,
+    TaskResult,
 )
 
 
@@ -98,3 +99,10 @@ class TaskPythonResultForm(forms.ModelForm):
     class Meta:
         model = TaskPythonResult
         fields = ('repository', 'description')
+
+class CommentForm(forms.ModelForm):
+    comment = forms.CharField(label=_('Leave comment'),
+            widget=forms.Textarea(attrs={'rows':'4', 'cols': '50'}))
+    class Meta:
+        model = TaskComment
+        fields = ('comment',)

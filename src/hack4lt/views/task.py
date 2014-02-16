@@ -1,3 +1,4 @@
+#! coding: utf-8
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, Http404
@@ -5,20 +6,22 @@ from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from hack4lt.forms import (
+    CommentForm,
     Task1Form,
     Task2Form,
-    TaskInfoForm,
-    TaskResultForm,
     TaskAplinkaResultForm,
+    TaskInfoForm,
     TaskPythonResultForm,
+    TaskResultForm,
 )
 from hack4lt.models import (
+    TaskComment,
     TaskInfo,
     TaskResult,
     TaskAplinkaResult,
     TaskPythonResult,
 )
-from hack4lt.views.account import AdminRequiredMixin
+from hack4lt.views.account import AdminRequiredMixin, LoginRequiredMixin
 from hack4lt.utils import slugify
 
 
@@ -41,7 +44,7 @@ class TaskInfoUpdate(UserMixin, AdminRequiredMixin, UpdateView):
     template_name = 'hack4lt/form.html'
     success_url = reverse_lazy('tasks')
 
-class TaskInfoList(AdminRequiredMixin, ListView):
+class TaskInfoList(LoginRequiredMixin, ListView):
     model = TaskInfo
     paginate_by = 30
     template_name = 'hack4lt/task_list.html'
@@ -88,7 +91,11 @@ class TaskResultUpdate(UserMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskResultUpdate, self).get_context_data(**kwargs)
-        context['task'] = TaskInfo.objects.get(slug=self.kwargs.get('slug'))
+        slug = self.kwargs.get('slug')
+        user = self.request.user
+        context['task'] = TaskInfo.objects.get(slug=slug)
+        context['comments'] = TaskComment.objects.order_by('created').filter(task__task__slug=slug, user=user)
+        context['comment_form'] = CommentForm()
         return context
 
     def get_object(self, queryset=None):
@@ -165,6 +172,26 @@ def task_view(request, task_id):
     return render(request, 'hack4lt/task.html', {
             'form': form,
         })
+
+
+def user_comment_view(request, slug):
+    user = request.user
+    task_info = TaskInfo.objects.get(slug=slug)
+    try:
+        task = TaskResult.objects.get(user=user, task=task_info)
+    except TaskResult.DoesNotExist:
+        raise Http404
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form.instance.user = user
+            form.instance.task = task
+            form.instance.save()
+            return HttpResponseRedirect(reverse_lazy('do-task', kwargs={'slug': slug}))
+    else:
+        form = CommentForm()
+    return HttpResponseRedirect(reverse_lazy('do-task', kwargs={'slug': slug}))
 
 
 def do_task_view(request, slug):

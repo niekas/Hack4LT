@@ -29,6 +29,19 @@
         </form>
         {% endif %}
 
+        {% if comment_form %}
+        <hr/>
+        <span style="text-align: center;"> <h4>{% trans 'Comments:' %}</h4></span>
+        {% for comment in comments %}
+        <p>{{ comment }} <i>--{{ comment.user }}</i></p>
+        {% endfor %}
+
+        <form action="{% url 'comment-task' task.slug %}" method="post">{% csrf_token %}
+            {{ comment_form.comment }}
+            <input class="btn btn-primary" type="submit" value="{% trans "Comment" %}" /></p>
+        </form>
+        {% endif %}
+
     </div>
     {% wysiwyg_editor "id_description" %}
     {% wysiwyg_editor "id_criterias" %}

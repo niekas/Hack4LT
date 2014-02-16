@@ -23,11 +23,14 @@ urlpatterns += i18n_patterns('',
     url(r'^task/(?P<slug>[a-z0-9-_]+)/update/$', task.TaskResultUpdate.as_view(), name='update-task'),
     url(r'^task/(?P<slug>[a-z0-9-_]+)/view/$', task.TaskResultDetail.as_view(), name='view-task'),
 
+    url(r'^task/(?P<slug>[a-z0-9-_]+)/comment/$', task.user_comment_view, name='comment-task'),
+
     url(r'^task/(?P<pk>\d*)/check/$', task.TaskResultCheckUpdate.as_view(), name='check-task'),
 
     url(r'^task/info/new/$', task.TaskInfoCreate.as_view(), name='new-task-info'),
     url(r'^task/(?P<pk>\d*)/info/update/$', task.TaskInfoUpdate.as_view(), name='update-task-info'),
     url(r'^task/(?P<pk>\d*)/info/delete/$', task.TaskInfoDelete.as_view(), name='delete-task-info'),
+
 
     url(r'^login/$', account.login_view, name='login'),
     url(r'^logout/$', account.logout_view, name='logout'),

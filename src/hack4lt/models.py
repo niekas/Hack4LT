@@ -105,3 +105,12 @@ class TaskAplinkaResult(TaskResult, models.Model):
 class TaskPythonResult(TaskResult, models.Model):
     repository = models.URLField(_('Repository page with task source code'), blank=True)
     description = models.TextField(_('Task description'))
+
+class TaskComment(models.Model):
+    task = models.ForeignKey('TaskResult', null=True, blank=True)
+    user = models.ForeignKey('Hacker', null=True, blank=True)
+    comment  = models.TextField(_('Comment'))
+    created = models.DateTimeField(_('Created'), default=timezone.now, blank=True)
+
+    def __unicode__(self):
+        return self.comment
