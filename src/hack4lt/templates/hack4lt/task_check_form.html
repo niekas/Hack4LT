@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load wysiwyg %}
+
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9 col-md-offset-2 small-spacing">
+        <h3><a style="color: black;" href="{% url 'do-task' form.instance.task.slug %}">
+                {{ form.instance.task.slug }} &lt;{{ form.instance.user }}&gt;</a></h3>
+        <ul>
+        {% for field in task_form.visible_fields %}
+        <li><b>{{ field.label }}</b>:
+            {% if field.value.url %}
+                <a href="{{ field.value.url }}">{{ field.value }}</a>
+            {% else %}
+                {{ field.value }}
+            {% endif %}
+        </li>
+        {% endfor %}
+        </ul>
+
+        {% if form %}
+        <hr/>
+        <h3>{% trans 'Task result evaluation' %}</h3>
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% wysiwyg_setup %}
+            {% bootstrap_form form %}
+            
+            {% buttons %}
+            <input class="btn btn-primary col-md-offset-2" type="submit" value="{% trans "Submit" %}" /></p>
+            {% endbuttons %}
+        </form>
+        {% endif %}
+
+        <hr/>
+        <h3>{% trans 'Task description' %}</h3>
+        {% with form.instance.task as task %}
+        <li><b>{% trans 'Points' %}</b>: {{ task.points }}</li>
+        <li><b>{% trans 'Extra points' %}</b>: {{ task.extra_points }}</li>
+        <li><b>{% trans 'Criterias' %}</b>: {{ task.criterias|safe }}</li>
+        <li><b>{% trans 'Description' %}</b>: {{ task.description|safe }}</li>
+        {% endwith %}
+
+    </div>
+{% endblock %}

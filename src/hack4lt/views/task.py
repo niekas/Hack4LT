@@ -8,10 +8,16 @@ from hack4lt.forms import (
     Task1Form,
     Task2Form,
     TaskInfoForm,
+    TaskResultForm,
     TaskAplinkaResultForm,
     TaskPythonResultForm,
 )
-from hack4lt.models import TaskInfo, TaskResult
+from hack4lt.models import (
+    TaskInfo,
+    TaskResult,
+    TaskAplinkaResult,
+    TaskPythonResult,
+)
 from hack4lt.views.account import AdminRequiredMixin
 from hack4lt.utils import slugify
 
@@ -116,6 +122,27 @@ class TaskResultDetail(UserMixin, DetailView):
 
     def get_object(self, queryset=None):
         return None
+
+
+def get_task_form(slug, user):
+    task_class = eval('Task%sResult' % slugify(unicode(slug)).capitalize())
+    task_result = task_class.objects.get(task__slug=slug, user=user)
+    task_form_class = eval('Task%sResultForm' % slugify(unicode(slug)).capitalize())
+    return task_form_class(instance=task_result)
+
+
+class TaskResultCheckUpdate(AdminRequiredMixin, UpdateView):
+    template_name = 'hack4lt/task_check_form.html'
+    success_url = reverse_lazy('tasks')
+    form_class = TaskResultForm
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskResultCheckUpdate, self).get_context_data(**kwargs)
+        context['task_form'] = get_task_form(slug=self.object.task.slug, user=self.object.user)
+        return context
+
+    def get_object(self, queryset=None):
+        return TaskResult.objects.get(pk=self.kwargs.get('pk'))
 
 
 def tasks_view(request):
