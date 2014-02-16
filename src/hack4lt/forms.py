@@ -75,8 +75,8 @@ class Task2Form(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Hacker
-        fields = ('first_name', 'last_name', 'email', 'repository', 'website',
-                  'stackoverflow_user', 'description')
+        fields = ('username', 'first_name', 'last_name', 'email', 'repository',
+                  'website', 'stackoverflow_user', 'description')
 
 class TaskInfoForm(forms.ModelForm):
     class Meta:
