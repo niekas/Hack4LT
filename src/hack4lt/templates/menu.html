@@ -18,7 +18,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" style="padding-right: 15px;">
             {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}"><button type="button" class="btn btn-success navbar-btn">{{ user }}</button></a>
+            <a href="{% url 'profile' %}"><button type="button" class="btn btn-success navbar-btn"
+                    {% if active == "profile" %}style="color: rgb(0, 100, 0);"{% endif %}
+                    >{{ user }}</button></a>
                 <a href="{% url 'logout' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Log Out" %}</button></a>
             {% else %}
                 <a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">{% trans "Log In" %}</button></a>
