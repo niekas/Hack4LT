@@ -99,7 +99,7 @@ class TaskResult(models.Model):
 
 
 class TaskAplinkaResult(TaskResult, models.Model):
-    file = models.FileField(_('sys_info file'), upload_to='task1')
+    file = models.FileField(_('File with system config information'), upload_to='task1')
 
 
 class TaskPythonResult(TaskResult, models.Model):
