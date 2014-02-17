@@ -27,8 +27,8 @@
                 &nbsp;&nbsp; <a class="btn btn-sm btn-warning" href="verify-email">{% trans "Verify email" %}</a>
           {% endif %}</li>
           <li>{% trans 'Joined' %}: <b>{{ object.date_joined|date:"Y-m-d" }}</b></li>
-          <li>{% trans 'Repository' %}: <b>{{ object.description }}</b></li>
-          <li>{% trans 'Stackoverflow' %}: <b>{{ object.stackoverflow }}</b></li>
+          <li>{% trans 'Repository' %}: <b>{{ object.repository }}</b></li>
+          <li>{% trans 'Stackoverflow' %}: <b>{{ object.stackoverflow_user }}</b></li>
           <li>{% trans 'Website' %}: <b>{{ object.website }}</b></li>
           <li>{% trans 'Description' %}: <b>{{ object.description|safe }}</b></li>
         </ul>
