@@ -44,7 +44,7 @@
         <p>{{ comment }} <i>--{{ comment.user }}</i></p>
         {% endfor %}
 
-        <form action="{% url 'admin-comment-task' form.instance.task.pk %}" method="post">{% csrf_token %}
+        <form action="{% url 'admin-comment-task' form.instance.pk %}" method="post">{% csrf_token %}
             {{ comment_form.comment }}
             <input class="btn btn-primary" type="submit" value="{% trans "Comment" %}" /></p>
         </form>

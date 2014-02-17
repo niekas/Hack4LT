@@ -147,7 +147,7 @@ class TaskResultCheckUpdate(AdminRequiredMixin, UpdateView):
         slug = self.object.task.slug
         user = self.object.user
         context['task_form'] = get_task_form(slug=slug, user=user)
-        context['comments'] = TaskComment.objects.order_by('created').filter(task__task__slug=slug, user=user)
+        context['comments'] = TaskComment.objects.order_by('created').filter(task=self.kwargs.get('pk'))
         context['comment_form'] = CommentForm()
         return context
 
