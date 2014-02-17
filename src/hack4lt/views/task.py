@@ -132,7 +132,7 @@ class TaskResultDetail(UserMixin, DetailView):
 
 def get_task_form(slug, user):
     task_class = eval('Task%sResult' % slugify(unicode(slug)).capitalize())
-    task_result = task_class.objects.get(task__slug=slug, user=user)
+    task_result = task_class.objects.order_by('-created').filter(task__slug=slug, user=user)[0]
     task_form_class = eval('Task%sResultForm' % slugify(unicode(slug)).capitalize())
     return task_form_class(instance=task_result)
 
