@@ -98,7 +98,7 @@ class TaskAplinkaResultForm(forms.ModelForm):
 class TaskPythonResultForm(forms.ModelForm):
     class Meta:
         model = TaskPythonResult
-        fields = ('repository', 'description')
+        fields = ('repository', 'description', 'should_check')
 
 class CommentForm(forms.ModelForm):
     comment = forms.CharField(label=_('Leave comment'),
