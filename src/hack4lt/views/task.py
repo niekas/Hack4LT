@@ -53,7 +53,7 @@ class TaskInfoList(LoginRequiredMixin, ListView):
         context = super(TaskInfoList, self).get_context_data(**kwargs)
         user_tasks = TaskResult.objects.filter(user=self.request.user)
         context['tasks_done'] = dict(user_tasks.filter(done=True).
-                                            values_list('pk', 'total_points'))
+                                            values_list('task__pk', 'total_points'))
         return context
 
 class TaskInfoDelete(AdminRequiredMixin, DeleteView):
