@@ -140,7 +140,9 @@ def profile_verify_email_view(request):
     sender = settings.DEFAULT_FROM_EMAIL
     send_mail(subject, body, sender, [receiver])
 
-    return HttpResponse('verify email: ' + user.email)
+    return render(request, 'hack4lt/message.html', {
+               'message': _('Email with verification instructions were sent to: ') + receiver,
+           })
 
 
 def reset_password_email_view(request):
@@ -160,7 +162,9 @@ def reset_password_email_view(request):
             })
             sender = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, body, sender, [receiver])
-            return HttpResponse(_('Recovery email sent to: ') + receiver)
+            return render(request, 'hack4lt/message.html', {
+                        'message': _('Recovery email sent to: ') + receiver,
+                    })
     else:
         email_form = EmailForm()
     return render(request, 'accounts/reset_password.html', {

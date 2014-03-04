@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load wysiwyg %}
+
+
+{% block menu %}
+    {% include 'menu.html' with active='message' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9 col-md-offset-2">
+        {% if message %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    </div>
+{% endblock %}

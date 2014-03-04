@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-04 10:38+0000\n"
+"POT-Creation-Date: 2014-03-04 11:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,8 +243,8 @@ msgstr "Registruotis"
 #: templates/accounts/reset_password.html:12
 msgid "Email with password recovery details will be sent to your email."
 msgstr ""
-"El. laiškas su slaptažodžio atstatymo instrukcijomis bus išsiųstas į "
-"jūsų el. pašto dėžutę."
+"El. laiškas su slaptažodžio atstatymo instrukcijomis bus išsiųstas į jūsų "
+"el. pašto dėžutę."
 
 #: templates/accounts/reset_password.html:15
 msgid "Recover password"
@@ -350,13 +350,20 @@ msgstr "Įveskite atliktos užduoties rezultatus:"
 msgid "Hack4LT verify email"
 msgstr "Hack4LT el. pašto adreso patvirtinimas"
 
-#: views/account.py:153
+#: views/account.py:144
+msgid "Email with verification instructions were sent to: "
+msgstr ""
+"El. laiškas su patvirtinimo instrukcijomis buvo išsiųstas šiuo el. pašto "
+"adresu: "
+
+#: views/account.py:155
 msgid "Hack4LT password reset"
 msgstr "Hack4LT slaptažodžio atnaujinimas"
 
-#: views/account.py:163
+#: views/account.py:166
 msgid "Recovery email sent to: "
-msgstr "Laiškas su detalesnėmis slaptažodžio atstatymo instrukcijomis išsiųstas į: "
+msgstr ""
+"Laiškas su detalesnėmis slaptažodžio atstatymo instrukcijomis išsiųstas į: "
 
 #~ msgid "Not implemented yet."
 #~ msgstr "Dar neįgyvendinta."
