@@ -213,6 +213,7 @@ def admin_comment_view(request, pk):
     return HttpResponseRedirect(reverse_lazy('check-task', kwargs={'pk': pk}))
 
 
+@login_required(login_url=reverse_lazy('login'))
 def do_task_view(request, slug):
     user = request.user
     try:
