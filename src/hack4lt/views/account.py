@@ -17,13 +17,15 @@ from django.conf import settings
 
 
 from hack4lt.forms import (
+    EmailForm,
     LoginForm,
+    PasswordRecoveryForm,
+    ProfileForm,
     RegistrationForm,
-    ProfileForm
 )
 from hack4lt.models import (
     TaskResult,
-    Hacker
+    Hacker,
 )
 
 
@@ -139,3 +141,47 @@ def profile_verify_email_view(request):
     send_mail(subject, body, sender, [receiver])
 
     return HttpResponse('verify email: ' + user.email)
+
+
+def reset_password_email_view(request):
+    email_form = EmailForm()
+    if request.method == 'POST':
+        email_form = EmailForm(request.POST)
+        if email_form.is_valid():
+            receiver = email_form.cleaned_data.get('email')
+            user = Hacker.objects.get(email=receiver)
+            subject = _('Hack4LT password reset')
+            body = render_to_string('accounts/mail/reset_password.html', {
+                'user': user.username,
+                'url': reverse_lazy('reset-password', kwargs={
+                        'uidb36': int_to_base36(user.pk),
+                        'token': default_token_generator.make_token(user)
+                    }),
+            })
+            sender = settings.DEFAULT_FROM_EMAIL
+            send_mail(subject, body, sender, [receiver])
+            return HttpResponse(_('Recovery email sent to: ') + receiver)
+    else:
+        email_form = EmailForm()
+    return render(request, 'accounts/reset_password.html', {
+                'form': email_form,
+            })
+
+def reset_password_view(request, uidb36, token):
+    user = Hacker.objects.get(pk=base36_to_int(uidb36))
+    if default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = PasswordRecoveryForm(request.POST)
+            if form.is_valid():
+                user = form.save(uidb36, token)
+                password = form.cleaned_data.get('password')
+                user = authenticate(username=user.username, password=password)
+                if user is not None and user.is_active:
+                    login(request, user)
+                return HttpResponseRedirect(reverse_lazy('home'))
+        else:
+            form = PasswordRecoveryForm()
+        return render(request, 'accounts/set_password.html', {
+                'form': form,
+            })
+    raise Http404
