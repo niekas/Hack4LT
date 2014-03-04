@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-04 09:40+0000\n"
+"POT-Creation-Date: 2014-03-04 10:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:19 forms.py:52
+#: forms.py:22 forms.py:55 forms.py:81
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:21
+#: forms.py:24 forms.py:83
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:51
+#: forms.py:54
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:62
+#: forms.py:65
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis neteisingas"
 
-#: forms.py:104
+#: forms.py:71
+msgid "E-mail"
+msgstr "El. pašto adresas"
+
+#: forms.py:76
+msgid "Please enter correct email address"
+msgstr "Įveskite teisingą el. pašto adresą"
+
+#: forms.py:146
 msgid "Leave comment"
 msgstr "Rašyti komentarą"
 
@@ -224,21 +232,45 @@ msgstr "Registruotis"
 msgid "Log in"
 msgstr "Prisijungti"
 
+#: templates/accounts/login.html:17
+msgid "Forgot password?  Recover it here"
+msgstr "Pamiršote slaptažodį?  Atnaujinkite jį čia"
+
 #: templates/accounts/register.html:14
 msgid "Register"
 msgstr "Registruotis"
 
+#: templates/accounts/reset_password.html:12
+msgid "Email with password recovery details will be sent to your email."
+msgstr ""
+"El. laiškas su slaptažodžio atstatymo instrukcijomis bus išsiųstas į "
+"jūsų el. pašto dėžutę."
+
+#: templates/accounts/reset_password.html:15
+msgid "Recover password"
+msgstr "Atnaujinti slaptažodį"
+
+#: templates/accounts/set_password.html:14
+msgid "Set password"
+msgstr "Nustatyti slaptažodį"
+
+#: templates/accounts/mail/reset_password.html:2
 #: templates/accounts/mail/verify_email.html:2
 msgid "Hello,"
 msgstr "Sveiki,"
 
-#: templates/accounts/mail/verify_email.html:4
-msgid "in order to verify Hack4LT email press this link:"
-msgstr "norėdami patvirtinti el. pašto adresą Hack4LT paspauskite šią nuorodą:"
+#: templates/accounts/mail/reset_password.html:4
+msgid "you can reset Hack4LT password by pressing this link:"
+msgstr "galite atnaujinti Hack4LT slaptažodį šiame puslapyje:"
 
+#: templates/accounts/mail/reset_password.html:6
 #: templates/accounts/mail/verify_email.html:6
 msgid "Best regards,"
 msgstr "Geriausi linkėjimai,"
+
+#: templates/accounts/mail/verify_email.html:4
+msgid "in order to verify Hack4LT email press this link:"
+msgstr "norėdami patvirtinti el. pašto adresą Hack4LT paspauskite šią nuorodą:"
 
 #: templates/hack4lt/admin.html:12
 msgid "Admin actions"
@@ -314,9 +346,17 @@ msgstr "Vertinimo kriterijai"
 msgid "Enter your task results:"
 msgstr "Įveskite atliktos užduoties rezultatus:"
 
-#: views/account.py:130
+#: views/account.py:132
 msgid "Hack4LT verify email"
 msgstr "Hack4LT el. pašto adreso patvirtinimas"
+
+#: views/account.py:153
+msgid "Hack4LT password reset"
+msgstr "Hack4LT slaptažodžio atnaujinimas"
+
+#: views/account.py:163
+msgid "Recovery email sent to: "
+msgstr "Laiškas su detalesnėmis slaptažodžio atstatymo instrukcijomis išsiųstas į: "
 
 #~ msgid "Not implemented yet."
 #~ msgstr "Dar neįgyvendinta."
