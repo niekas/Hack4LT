@@ -41,6 +41,9 @@ urlpatterns += i18n_patterns('',
     url(r'^profile/verify-email/$', account.profile_verify_email_view, name='profile-verify-email'),
     url(r'^verify-email/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
             account.verify_email_view, name='verify-email'),
+    url(r'^reset-password/email/$', account.reset_password_email_view, name='reset-password-email'),
+    url(r'^reset-password/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            account.profile_verify_email_view, name='reset-password'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
