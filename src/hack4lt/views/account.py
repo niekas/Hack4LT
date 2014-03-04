@@ -1,18 +1,30 @@
 from django.contrib.auth import login, logout, authenticate
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Sum
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, DetailView
+
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.utils.http import int_to_base36, base36_to_int
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
+
 
 from hack4lt.forms import (
     LoginForm,
     RegistrationForm,
     ProfileForm
 )
-from hack4lt.models import TaskResult
+from hack4lt.models import (
+    TaskResult,
+    Hacker
+)
 
 
 def login_view(request, *args, **kwargs):
@@ -100,3 +112,30 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+
+
+def verify_email_view(request, uidb36, token):
+    user = Hacker.objects.get(pk=base36_to_int(uidb36))
+    if default_token_generator.check_token(user, token):
+        user.email_verified = True
+        user.save()
+        return HttpResponseRedirect(reverse_lazy('profile'))
+    raise Http404
+
+
+def profile_verify_email_view(request):
+    user = request.user
+    receiver = user.email
+    subject = _('Hack4LT verify email')
+    body = render_to_string('accounts/mail/verify_email.html', {
+                'username': user.username,
+                'url': reverse_lazy('verify-email', kwargs={
+                        'uidb36': int_to_base36(user.pk),
+                        'token': default_token_generator.make_token(user)
+                    }),
+            })
+    sender = settings.DEFAULT_FROM_EMAIL
+    send_mail(subject, body, sender, [receiver])
+
+    return HttpResponse('verify email: ' + user.email)

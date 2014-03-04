@@ -38,6 +38,9 @@ urlpatterns += i18n_patterns('',
     url(r'^profile/$', account.ProfileDetailView.as_view(), name='profile'),
     url(r'^profile/edit/$', account.profile_view, name='profile-edit'),
     url(r'^admin/$', basic.admin_view, name='admin-dashboard'),
+    url(r'^profile/verify-email/$', account.profile_verify_email_view, name='profile-verify-email'),
+    url(r'^verify-email/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            account.verify_email_view, name='verify-email'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

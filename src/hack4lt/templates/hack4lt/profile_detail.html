@@ -25,8 +25,8 @@
         <ul>
           <li>{% trans 'Got points' %}: <b style="color: rgb(0, 80, 0);">{{ total_points }}</b></li>
           <li>{% trans 'Email' %}: <b>{{ object.email }}</b>
-          {% if not object.email_verified and False %}
-                &nbsp;&nbsp; <a class="btn btn-sm btn-warning" href="verify-email">{% trans "Verify email" %}</a>
+          {% if not object.email_verified %}
+          &nbsp;&nbsp; <a class="btn btn-sm btn-warning" href="{% url 'profile-verify-email' %}">{% trans "Verify email" %}</a>
           {% endif %}</li>
           <li>{% trans 'Joined' %}: <b>{{ object.date_joined|date:"Y-m-d" }}</b></li>
           <li>{% trans 'Repository' %}: <b>{{ object.repository }}</b></li>
