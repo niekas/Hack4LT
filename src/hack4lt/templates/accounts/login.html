@@ -12,7 +12,10 @@
             <input type='hidden' name='next' value='{{ request.GET.next }}'>
             {% bootstrap_form form %}
             {% buttons %}
-            <input class="btn btn-primary" type="submit" value="{% trans "Log in" %}" /></p>
+            <input class="btn btn-primary" type="submit" value="{% trans "Log in" %}" />
+            <span style="margin-left: 20px;">
+            <a href="{% url "reset-password-email" %}">{% trans "Forgot password?  Recover it here" %}</a>
+        </span>
             {% endbuttons %}
         </form>
     </div>
