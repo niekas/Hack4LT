@@ -243,8 +243,8 @@ msgstr "Registruotis"
 #: templates/accounts/reset_password.html:12
 msgid "Email with password recovery details will be sent to your email."
 msgstr ""
-"El. laiškas su slaptažodžio atstatymo instrukcijomis bus išsiųstas į jūsų "
-"el. pašto dėžutę."
+"El. laiškas su slaptažodžio atstatymo instrukcijomis bus Jums išsiųstas "
+"el. paštu."
 
 #: templates/accounts/reset_password.html:15
 msgid "Recover password"
@@ -362,8 +362,7 @@ msgstr "Hack4LT slaptažodžio atnaujinimas"
 
 #: views/account.py:166
 msgid "Recovery email sent to: "
-msgstr ""
-"Laiškas su detalesnėmis slaptažodžio atstatymo instrukcijomis išsiųstas į: "
+msgstr "Laiškas su slaptažodžio atstatymo instrukcijomis išsiųstas į: "
 
 #~ msgid "Not implemented yet."
 #~ msgstr "Dar neįgyvendinta."
