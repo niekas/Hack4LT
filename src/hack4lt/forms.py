@@ -122,6 +122,18 @@ class ProfileForm(forms.ModelForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'repository',
                   'website', 'stackoverflow_user', 'description')
 
+    def save(self, *args, **kwargs):
+        email_verified = False
+        if self.instance and self.instance.pk:
+            user = Hacker.objects.get(pk=self.instance.pk)
+            email_verified = user.email_verified
+            if user.email != self.cleaned_data.get('email'):
+                email_verified = False
+                user.save()
+        user = super(ProfileForm, self).save(*args, **kwargs)
+        user.email_verified = email_verified
+        user.save()
+
 class TaskInfoForm(forms.ModelForm):
     class Meta:
         model = TaskInfo
