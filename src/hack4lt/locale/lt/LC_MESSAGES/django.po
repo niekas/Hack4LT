@@ -234,7 +234,7 @@ msgstr "Prisijungti"
 
 #: templates/accounts/login.html:17
 msgid "Forgot password?  Recover it here"
-msgstr "Pamiršote slaptažodį?  Atnaujinkite jį čia"
+msgstr "Pamiršote slaptažodį?  Spauskite čia"
 
 #: templates/accounts/register.html:14
 msgid "Register"
