@@ -152,7 +152,7 @@ def reset_password_email_view(request):
             user = Hacker.objects.get(email=receiver)
             subject = _('Hack4LT password reset')
             body = render_to_string('accounts/mail/reset_password.html', {
-                'user': user.username,
+                'username': user.username,
                 'url': reverse_lazy('reset-password', kwargs={
                         'uidb36': int_to_base36(user.pk),
                         'token': default_token_generator.make_token(user)
