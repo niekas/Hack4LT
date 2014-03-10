@@ -92,8 +92,11 @@ class TaskResultUpdate(UserMixin, UpdateView):
         context = super(TaskResultUpdate, self).get_context_data(**kwargs)
         slug = self.kwargs.get('slug')
         user = self.request.user
-        context['task'] = TaskInfo.objects.get(slug=slug)
-        context['comments'] = TaskComment.objects.order_by('created').filter(task__task__slug=slug, user=user)
+        task_info = TaskInfo.objects.get(slug=slug)
+        context['task'] = task_info
+        task = TaskResult.objects.get(user=user, task=task_info)
+        if task:
+            context['comments'] = task.taskcomment_set.all()
         context['comment_form'] = CommentForm()
         return context
 
