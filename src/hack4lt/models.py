@@ -128,7 +128,7 @@ class TaskSeminarasResult(TaskResult, models.Model):
                              help_text=_('You can choose topic from <a '
                              'href="/topics">the list</a> or suggest it your '
                              'self'))
-    description = models.TextField(_('Task description'))
+    description = models.TextField(_('Task description'), null=True, blank=True)
     presentation = models.FileField(_('Presentation slides'), upload_to='seminar', blank=True, null=True)
     repository = models.URLField(_('Repository page with task source code'), blank=True, null=True)
     date = models.CharField(_('Date'), choices=PRESENTATION_DATES, max_length=20, default='2014-03-31')
