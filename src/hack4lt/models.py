@@ -133,3 +133,13 @@ class TaskSeminarasResult(TaskResult, models.Model):
     repository = models.URLField(_('Repository page with task source code'), blank=True, null=True)
     date = models.CharField(_('Date'), choices=PRESENTATION_DATES, max_length=20, default='2014-03-31')
     tags = models.CharField(_('Tags'), max_length=900, help_text=_('Comma separated keywords (problem, library names)'))
+
+
+class Topic(models.Model):
+    title = models.CharField(_('Title'), max_length=900, unique=True,
+                             help_text=_('You can choose topic from <a '
+                             'href="/topics">the list</a> or suggest it your '
+                             'self'))
+    description = models.TextField(_('Task description'))
+    tags = models.CharField(_('Tags'), max_length=900, help_text=_('Comma separated keywords (problem, library names)'))
+

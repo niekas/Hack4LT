@@ -15,6 +15,7 @@ from hack4lt.forms import (
     TaskSeminarasResultForm,
 )
 from hack4lt.models import (
+    Topic,
     TaskComment,
     TaskInfo,
     TaskResult,
@@ -85,6 +86,14 @@ class TaskResultCreate(UserMixin, CreateView):
         task = TaskInfo.objects.get(slug=self.kwargs['slug'])
         return eval('Task%sResultForm' % slugify(unicode(task.slug)).capitalize())
 
+class TopicCreate(LoginRequiredMixin, CreateView):
+    model = Topic
+    success_url = reverse_lazy('topics')
+
+class TopicList(LoginRequiredMixin, ListView):
+    model = Topic
+    paginate_by = 30
+    success_url = reverse_lazy('topics')
 
 class TaskResultUpdate(UserMixin, UpdateView):
     template_name = 'hack4lt/task_result_form.html'
@@ -234,3 +243,4 @@ def do_task_view(request, slug):
         return HttpResponseRedirect(reverse_lazy('update-task', kwargs={'slug': slug}))
 
     return HttpResponseRedirect(reverse_lazy('create-task', kwargs={'slug': slug}))
+

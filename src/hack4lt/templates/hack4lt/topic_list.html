@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load value from utils %}
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2 small-spacing">
+        <ol>
+        {% for topic in object_list %}
+        <li class="" style="padding-bottom:15px;">
+            <b>{{ topic.title }}</b> ({{ topic.tags }})<br/> {{ topic.description }}
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

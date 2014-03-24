@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load wysiwyg %}
+
+
+{% block menu %}
+    {% include 'menu.html' with active='tasks' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9 col-md-offset-2">
+        <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% wysiwyg_setup %}
+            {% bootstrap_form form %}
+            
+            {% buttons %}
+            <input class="btn btn-primary" type="submit" value="{% trans "Submit" %}" /></p>
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}
