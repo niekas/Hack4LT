@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-04 11:33+0000\n"
+"POT-Creation-Date: 2014-03-24 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:22 forms.py:55 forms.py:81
+#: forms.py:23 forms.py:56 forms.py:82
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:24 forms.py:83
+#: forms.py:25 forms.py:84
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:54
+#: forms.py:55
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:65
+#: forms.py:66
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis neteisingas"
 
-#: forms.py:71
+#: forms.py:72
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:76
+#: forms.py:77
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą el. pašto adresą"
 
-#: forms.py:146
+#: forms.py:164
 msgid "Leave comment"
 msgstr "Rašyti komentarą"
 
@@ -118,15 +118,16 @@ msgstr "{0} paskyra aktyvuota"
 msgid "sys_info file"
 msgstr "sys_info failas"
 
-#: models.py:74 models.py:106
+#: models.py:74 models.py:106 models.py:133
 msgid "Repository page with task source code"
 msgstr "Repozitorijos puslapis kuriame pateikiamas užduoties išeities kodas"
 
-#: models.py:75 models.py:107 templates/hack4lt/task_check_form.html:54
+#: models.py:75 models.py:107 models.py:131
+#: templates/hack4lt/task_check_form.html:54
 msgid "Task description"
 msgstr "Užduoties aprašymas"
 
-#: models.py:79
+#: models.py:79 models.py:127
 msgid "Title"
 msgstr "Pavadinimas"
 
@@ -188,6 +189,30 @@ msgstr "Failas su sistemos konfigūracijos informacija"
 msgid "Comment"
 msgstr "Komentaras"
 
+#: models.py:128
+msgid ""
+"You can choose topic from <a href=\"/topics\">the list</a> or suggest it "
+"your self"
+msgstr ""
+"Galite pasirinkti temą iš <a href=\"/topics\">šio sąrašo</a> arba pasiūlyti "
+"savo"
+
+#: models.py:132
+msgid "Presentation slides"
+msgstr "Pristatymo skaidrės (PDF)"
+
+#: models.py:134
+msgid "Date"
+msgstr "Data"
+
+#: models.py:135
+msgid "Tags"
+msgstr "Raktiniai žodžiai"
+
+#: models.py:135
+msgid "Comma separated keywords (problem, library names)"
+msgstr "Kableliais atskirti raktiniai žodžiai (problemos, bibliotekų pavadinimai)"
+
 #: settings.py:49
 msgid "Lithuanian"
 msgstr "Lietuviškas"
@@ -243,8 +268,8 @@ msgstr "Registruotis"
 #: templates/accounts/reset_password.html:12
 msgid "Email with password recovery details will be sent to your email."
 msgstr ""
-"El. laiškas su slaptažodžio atstatymo instrukcijomis bus Jums išsiųstas "
-"el. paštu."
+"El. laiškas su slaptažodžio atstatymo instrukcijomis bus Jums išsiųstas el. "
+"paštu."
 
 #: templates/accounts/reset_password.html:15
 msgid "Recover password"

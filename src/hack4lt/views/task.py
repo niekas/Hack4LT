@@ -12,6 +12,7 @@ from hack4lt.forms import (
     TaskInfoForm,
     TaskPythonResultForm,
     TaskResultForm,
+    TaskSeminarasResultForm,
 )
 from hack4lt.models import (
     TaskComment,
@@ -19,6 +20,7 @@ from hack4lt.models import (
     TaskResult,
     TaskAplinkaResult,
     TaskPythonResult,
+    TaskSeminarasResult,
 )
 from hack4lt.views.account import AdminRequiredMixin, LoginRequiredMixin
 from hack4lt.utils import slugify

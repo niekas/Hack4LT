@@ -15,6 +15,7 @@ from hack4lt.models import (
     TaskInfo,
     TaskPythonResult,
     TaskResult,
+    TaskSeminarasResult,
 )
 
 
@@ -153,6 +154,11 @@ class TaskPythonResultForm(forms.ModelForm):
     class Meta:
         model = TaskPythonResult
         fields = ('repository', 'description', 'should_check')
+
+class TaskSeminarasResultForm(forms.ModelForm):
+    class Meta:
+        model = TaskSeminarasResult
+        fields = ('title', 'date', 'presentation', 'repository', 'tags', 'description')
 
 class CommentForm(forms.ModelForm):
     comment = forms.CharField(label=_('Leave comment'),
