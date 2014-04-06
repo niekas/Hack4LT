@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load bootstrap3 %}
 {% load wysiwyg %}
+{% load tz %}
 
 
 {% block menu %}
@@ -41,7 +42,7 @@
         <hr/>
         <span style="text-align: center;"> <h4>{% trans 'Comments:' %}</h4></span>
         {% for comment in comments %}
-        <p>{{ comment|linebreaks }} <i>--{{ comment.user }} <sup>{{ comment.created|date:"Y-m-d h:m" }}</sup></i></p>
+        <p>{{ comment|linebreaks }} <i>--{{ comment.user }} <sup>{{ comment.created|localtime|date:"Y-m-d h:m" }}</sup></i></p>
         {% endfor %}
 
         <form action="{% url 'admin-comment-task' form.instance.pk %}" method="post">{% csrf_token %}
