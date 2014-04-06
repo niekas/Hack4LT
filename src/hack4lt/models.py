@@ -117,12 +117,11 @@ class TaskComment(models.Model):
 
 class TaskSeminarasResult(TaskResult, models.Model):
     PRESENTATION_DATES = (
-        ('2014-03-31', '2014-03-31'),
         ('2014-04-07', '2014-04-07'),
         ('2014-04-21', '2014-04-21'),
-        ('2014-04-26', '2014-04-26 (PyConLT 2014)'),
         ('2014-04-28', '2014-04-28'),
         ('2014-05-05', '2014-05-05'),
+        ('2014-05-10', '2014-05-10 (PyConLT 2014)'),
     )
     title = models.CharField(_('Title'), max_length=900, unique=True,
                              help_text=_('You can choose topic from <a '
