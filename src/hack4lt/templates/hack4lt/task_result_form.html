@@ -33,7 +33,7 @@
         <hr/>
         <span style="text-align: center;"> <h4>{% trans 'Comments:' %}</h4></span>
         {% for comment in comments %}
-        <p>{{ comment|linebreaks }} <i>--{{ comment.user }}</i></p>
+        <p>{{ comment|linebreaks }} <i>--{{ comment.user }} <sup>{{ comment.created|date:"Y-m-d h:m" }}<sup></i></p>
         {% endfor %}
 
         <form action="{% url 'comment-task' task.slug %}" method="post">{% csrf_token %}
