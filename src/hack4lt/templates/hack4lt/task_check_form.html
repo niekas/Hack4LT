@@ -16,7 +16,7 @@
         <ul>
         {% for field in task_form.visible_fields %}
         <li><b>{{ field.label }}</b>:
-            {% if field.value.url %}
+            {% if field.value and field.value.url %}
                 <a href="{{ field.value.url }}">{{ field.value }}</a>
             {% else %}
                 {{ field.value }}
