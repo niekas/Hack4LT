@@ -84,6 +84,21 @@ def profile_view(request):
     })
 
 
+@login_required(login_url=reverse_lazy('login'))
+def admin_profile_view(request, username):
+    user = request.user
+    if not user.is_superuser:
+        return HttpResponseRedirect(reverse_lazy('login'))
+
+    try:
+        user = Hacker.objects.get(username__iexact=username)
+    except Hacker.DoesNotExist:
+        raise Http404
+    tasks_done = TaskResult.objects.filter(user=user, done=True)
+    context = {'tasks_done': tasks_done}
+    context = {'object': user}
+    context['total_points'] = tasks_done.aggregate(points=Sum('total_points'))['points'] or 0
+    return render(request, 'hack4lt/profile_detail.html', context)
 
 
 class LoginRequiredMixin(object):
