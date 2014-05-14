@@ -14,11 +14,6 @@
         <h3>{{ object }} <a href="{% url 'profile-edit' %}"><span style="font-size: 16px;"><span class="glyphicon glyphicon-pencil"></span></span></a></h3>
         </span>
         <div style="text-align: center;">
-          {% if object.stackoverflow_user and so_user_id %}
-          <a href="{{ object.stackoverflow_user }}">
-              <img class="img-thumbnail" src="http://stackoverflow.com/users/flair/{{ so_user_id }}.png" width="150">
-          </a>
-          {% endif %}
         {% for task in tasks_done %}
             {% if task.task.badge %}
                 &nbsp; <a href="{{ task.task.badge.url }}"><img class="img-thumbnail" style="height:64px;" src="{{ task.task.badge.url }}"/></a>
@@ -33,6 +28,9 @@
           {% if not object.email_verified %}
           &nbsp;&nbsp; <a class="btn btn-sm btn-warning" href="{% url 'profile-verify-email' %}">{% trans "Verify email" %}</a>
           {% endif %}</li>
+          {% if object.stackoverflow_user and so_user_id %}
+          <li>{% trans 'StackOverflow' %}:<a href="{{ object.stackoverflow_user }}">{{ object.stackoverflow_user }}</a></li>
+          {% endif %}
             <li>{% trans 'Joined' %}: <b>{{ object.date_joined|date:"Y-m-d" }}</b></li>
           {% if object.repository %}
             <li>{% trans 'Repository' %}: <b>{{ object.repository }}</b></li>
