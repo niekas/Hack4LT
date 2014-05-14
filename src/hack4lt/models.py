@@ -30,6 +30,8 @@ class Hacker(AbstractBaseUser, PermissionsMixin):
 
     repository = models.URLField(_('Your github.com or bitbucket.org account page'), blank=True)
     stackoverflow_user = models.URLField(_('Your Stackoverflow.com account page'), blank=True)
+    final_mark = models.IntegerField(_('Final mark'), blank=True, null=True)
+    exam_date = models.DateTimeField(_('Exam date'), default=None, blank=True, null=True)
     website = models.URLField(_('Your blog or website'), blank=True)
     description = models.TextField(_('Additional information'), blank=True)
 
