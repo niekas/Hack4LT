@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-24 09:18+0000\n"
+"POT-Creation-Date: 2014-05-14 22:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 "Nurodo ar naudotojas yra aktyvuotas. Deaktyvuokite naudotoją vietoje jo "
 "ištrynimo."
 
-#: models.py:29 models.py:87
+#: models.py:29 models.py:89
 msgid "date joined"
 msgstr "Profilio sukūrimo data"
 
@@ -102,94 +102,102 @@ msgstr "Jūsų github.com ar bitbucket.org paskyros puslapis"
 msgid "Your Stackoverflow.com account page"
 msgstr "Jūsų stackoverflow.com paskyros puslapis"
 
-#: models.py:33
+#: models.py:33 templates/hack4lt/profile_detail.html:27
+msgid "Final mark"
+msgstr "Galutinis pažymys"
+
+#: models.py:34
+msgid "Exam date"
+msgstr "Egzamino data"
+
+#: models.py:35
 msgid "Your blog or website"
 msgstr "Jūsų blogo arba asmeninis tinklapis"
 
-#: models.py:34
+#: models.py:36
 msgid "Additional information"
 msgstr "Papildoma informacija"
 
-#: models.py:57
+#: models.py:59
 msgid "{0} account activated"
 msgstr "{0} paskyra aktyvuota"
 
-#: models.py:70
+#: models.py:72
 msgid "sys_info file"
 msgstr "sys_info failas"
 
-#: models.py:74 models.py:106 models.py:133
+#: models.py:76 models.py:108 models.py:135
 msgid "Repository page with task source code"
 msgstr "Repozitorijos puslapis kuriame pateikiamas užduoties išeities kodas"
 
-#: models.py:75 models.py:107 models.py:131
-#: templates/hack4lt/task_check_form.html:54
+#: models.py:77 models.py:109 models.py:133 models.py:145
+#: templates/hack4lt/task_check_form.html:55
 msgid "Task description"
 msgstr "Užduoties aprašymas"
 
-#: models.py:79 models.py:127
+#: models.py:81 models.py:129 models.py:141
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: models.py:80 templates/hack4lt/task_check_form.html:56
+#: models.py:82 templates/hack4lt/task_check_form.html:57
 msgid "Points"
 msgstr "Balai"
 
-#: models.py:81 templates/hack4lt/task_check_form.html:57
+#: models.py:83 templates/hack4lt/task_check_form.html:58
 msgid "Extra points"
 msgstr "Papildomi balai"
 
-#: models.py:82
+#: models.py:84
 msgid "Deadline"
 msgstr "Terminas"
 
-#: models.py:83 templates/hack4lt/profile_detail.html:35
-#: templates/hack4lt/task_check_form.html:59
+#: models.py:85 templates/hack4lt/profile_detail.html:46
+#: templates/hack4lt/task_check_form.html:60
 msgid "Description"
 msgstr "Aprašymas"
 
-#: models.py:84 templates/hack4lt/task_check_form.html:58
+#: models.py:86 templates/hack4lt/task_check_form.html:59
 msgid "Criterias"
 msgstr "Kriterijai"
 
-#: models.py:85
+#: models.py:87
 msgid "Badge"
 msgstr "Ženkliukas"
 
-#: models.py:88
+#: models.py:90
 msgid "Slug"
 msgstr "Trumpinys"
 
-#: models.py:94
+#: models.py:96
 msgid "Total points"
 msgstr "Gauta balų"
 
-#: models.py:95
+#: models.py:97
 msgid "Got extra points"
 msgstr "Gavo papildomų balų"
 
-#: models.py:96
+#: models.py:98
 msgid "Task done"
 msgstr "Užduotis atlikta"
 
-#: models.py:97
+#: models.py:99
 msgid "Finished task, it can be examined"
 msgstr "Užduotis baigta, ją galima patikrinti"
 
-#: models.py:98 models.py:113
+#: models.py:100 models.py:115
 msgid "Created"
 msgstr "Sukurta"
 
-#: models.py:102
+#: models.py:104
 msgid "File with system config information"
 msgstr "Failas su sistemos konfigūracijos informacija"
 
-#: models.py:112 templates/hack4lt/task_check_form.html:49
-#: templates/hack4lt/task_result_form.html:41
+#: models.py:114 templates/hack4lt/task_check_form.html:50
+#: templates/hack4lt/task_result_form.html:42
 msgid "Comment"
 msgstr "Komentaras"
 
-#: models.py:128
+#: models.py:130 models.py:142
 msgid ""
 "You can choose topic from <a href=\"/topics\">the list</a> or suggest it "
 "your self"
@@ -197,27 +205,28 @@ msgstr ""
 "Galite pasirinkti temą iš <a href=\"/topics\">šio sąrašo</a> arba pasiūlyti "
 "savo"
 
-#: models.py:132
+#: models.py:134
 msgid "Presentation slides"
 msgstr "Pristatymo skaidrės (PDF)"
 
-#: models.py:134
+#: models.py:136
 msgid "Date"
 msgstr "Data"
 
-#: models.py:135
+#: models.py:137 models.py:146
 msgid "Tags"
 msgstr "Raktiniai žodžiai"
 
-#: models.py:135
+#: models.py:137 models.py:146
 msgid "Comma separated keywords (problem, library names)"
-msgstr "Kableliais atskirti raktiniai žodžiai (problemos, bibliotekų pavadinimai)"
+msgstr ""
+"Kableliais atskirti raktiniai žodžiai (problemos, bibliotekų pavadinimai)"
 
-#: settings.py:49
+#: settings.py:50
 msgid "Lithuanian"
 msgstr "Lietuviškas"
 
-#: settings.py:50
+#: settings.py:51
 msgid "English"
 msgstr "Anglų"
 
@@ -309,8 +318,9 @@ msgstr "Kurti naują užduotį"
 msgid "Check these tasks"
 msgstr "Tikrinti šias užduotis"
 
-#: templates/hack4lt/form.html:18 templates/hack4lt/task_check_form.html:35
-#: templates/hack4lt/task_result_form.html:27
+#: templates/hack4lt/form.html:18 templates/hack4lt/task_check_form.html:36
+#: templates/hack4lt/task_result_form.html:28
+#: templates/hack4lt/topic_form.html:18
 msgid "Submit"
 msgstr "Patvirtinti"
 
@@ -322,31 +332,32 @@ msgstr ""
 "Lietuvių Python bendruomenės tinklapis skirtas renginiams, paskaitoms, "
 "kolektyvinei kūrybai, žinių dalinimuisi ir ne tik."
 
-#: templates/hack4lt/profile_detail.html:26
+#: templates/hack4lt/profile_detail.html:29
 msgid "Got points"
 msgstr "Surinkta balų"
 
-#: templates/hack4lt/profile_detail.html:27
+#: templates/hack4lt/profile_detail.html:31
 msgid "Email"
 msgstr "El. pašto adresas"
 
-#: templates/hack4lt/profile_detail.html:29
+#: templates/hack4lt/profile_detail.html:33
 msgid "Verify email"
 msgstr "Patvirtinti el. pašto adresą"
 
-#: templates/hack4lt/profile_detail.html:31
+#: templates/hack4lt/profile_detail.html:36
+#, fuzzy
+msgid "StackOverflow"
+msgstr "Stackoverflow"
+
+#: templates/hack4lt/profile_detail.html:38
 msgid "Joined"
 msgstr "Prisiregistravo"
 
-#: templates/hack4lt/profile_detail.html:32
+#: templates/hack4lt/profile_detail.html:40
 msgid "Repository"
 msgstr "Repozitorija"
 
-#: templates/hack4lt/profile_detail.html:33
-msgid "Stackoverflow"
-msgstr "Stackoverflow"
-
-#: templates/hack4lt/profile_detail.html:34
+#: templates/hack4lt/profile_detail.html:43
 msgid "Website"
 msgstr "Tinklapis"
 
@@ -354,38 +365,38 @@ msgstr "Tinklapis"
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: templates/hack4lt/task_check_form.html:29
+#: templates/hack4lt/task_check_form.html:30
 msgid "Task result evaluation"
 msgstr "Užduoties rezultatų įvertinimas"
 
-#: templates/hack4lt/task_check_form.html:42
-#: templates/hack4lt/task_result_form.html:34
+#: templates/hack4lt/task_check_form.html:43
+#: templates/hack4lt/task_result_form.html:35
 msgid "Comments:"
 msgstr "Komentarai:"
 
-#: templates/hack4lt/task_result_form.html:15
+#: templates/hack4lt/task_result_form.html:16
 msgid "Evaluation criterias"
 msgstr "Vertinimo kriterijai"
 
-#: templates/hack4lt/task_result_form.html:20
+#: templates/hack4lt/task_result_form.html:21
 msgid "Enter your task results:"
 msgstr "Įveskite atliktos užduoties rezultatus:"
 
-#: views/account.py:132
+#: views/account.py:160
 msgid "Hack4LT verify email"
 msgstr "Hack4LT el. pašto adreso patvirtinimas"
 
-#: views/account.py:144
+#: views/account.py:172
 msgid "Email with verification instructions were sent to: "
 msgstr ""
 "El. laiškas su patvirtinimo instrukcijomis buvo išsiųstas šiuo el. pašto "
 "adresu: "
 
-#: views/account.py:155
+#: views/account.py:183
 msgid "Hack4LT password reset"
 msgstr "Hack4LT slaptažodžio atnaujinimas"
 
-#: views/account.py:166
+#: views/account.py:194
 msgid "Recovery email sent to: "
 msgstr "Laiškas su slaptažodžio atstatymo instrukcijomis išsiųstas į: "
 
