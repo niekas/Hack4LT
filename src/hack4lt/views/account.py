@@ -14,6 +14,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
+import re
 
 
 from hack4lt.forms import (
@@ -97,6 +98,8 @@ def admin_profile_view(request, username):
     tasks_done = TaskResult.objects.filter(user=user, done=True)
     context = {'tasks_done': tasks_done}
     context = {'object': user}
+    if user.stackoverflow_user:
+        context['so_user_id'] = get_so_user_id(user.stackoverflow_user)
     context['total_points'] = tasks_done.aggregate(points=Sum('total_points'))['points'] or 0
     return render(request, 'hack4lt/profile_detail.html', context)
 
@@ -116,6 +119,14 @@ class AdminRequiredMixin(object):
         return super(AdminRequiredMixin, self).dispatch(*args, **kwargs)
 
 
+def get_so_user_id(so_user_url):
+    pattern = 'stackoverflow.com/users/(\d+)/'
+    try:
+        return re.findall(pattern, so_user_url)[0]
+    except IndexError:
+        return None
+
+
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     template_name = 'hack4lt/profile_detail.html'
 
@@ -124,6 +135,8 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
         tasks_done = TaskResult.objects.filter(user=user, done=True)
         context['tasks_done'] = tasks_done
+        if user.stackoverflow_user:
+            context['so_user_id'] = get_so_user_id(user.stackoverflow_user)
         context['total_points'] = tasks_done.aggregate(points=Sum('total_points'))['points'] or 0
         return context
 
