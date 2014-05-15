@@ -23,8 +23,8 @@
     </div>
     <div class="col-md-8 col-md-offset-3">
         <ul>
-          {% if user.final_mark %}
-            <li>{% trans 'Final mark' %}: <b style="color: rgb(0, 0, 80);">{{ user.final_mark }}</b> (<b style="color: rgb(0, 80, 0);">{{ total_points }}</b>)</li>
+          {% if object.final_mark %}
+            <li>{% trans 'Final mark' %}: <b style="color: rgb(0, 0, 80);">{{ object.final_mark }}</b> (<b style="color: rgb(0, 80, 0);">{{ total_points }}</b>)</li>
           {% else %}
             <li>{% trans 'Got points' %}: <b style="color: rgb(0, 80, 0);">{{ total_points }}</b></li>
           {% endif %}
