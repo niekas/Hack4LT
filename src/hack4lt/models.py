@@ -124,7 +124,8 @@ class TaskSeminarasResult(TaskResult, models.Model):
         # ('2014-05-10', '2014-05-10 (PyConLT 2014)'),
         # ('2014-05-12', '2014-05-12'),
         # ('2014-05-19', '2014-05-19'),
-        ('2014-05-26', '2014-05-26'),
+        #('2014-05-26', '2014-05-26'),
+        ('2014-06-02', '2014-06-02'),
     )
     title = models.CharField(_('Title'), max_length=900, unique=True,
                              help_text=_('You can choose topic from <a '
@@ -133,7 +134,7 @@ class TaskSeminarasResult(TaskResult, models.Model):
     description = models.TextField(_('Task description'), null=True, blank=True)
     presentation = models.FileField(_('Presentation slides'), upload_to='seminar', blank=True, null=True)
     repository = models.URLField(_('Repository page with task source code'), blank=True, null=True)
-    date = models.CharField(_('Date'), choices=PRESENTATION_DATES, max_length=20, default='2014-05-26', null=True)
+    date = models.CharField(_('Date'), choices=PRESENTATION_DATES, max_length=20, default='2014-06-02', null=True)
     tags = models.CharField(_('Tags'), max_length=900, help_text=_('Comma separated keywords (problem, library names)'))
 
 
