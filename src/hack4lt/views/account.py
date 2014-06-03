@@ -93,6 +93,8 @@ def admin_profile_view(request, username):
 
     try:
         user = Hacker.objects.get(username__iexact=username)
+    except Hacker.MultipleObjectsReturned:
+        user = Hacker.objects.get(username__exact=username)
     except Hacker.DoesNotExist:
         raise Http404
     tasks_done = TaskResult.objects.filter(user=user, done=True)
